@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Faculty & Placement | Ankira Solution – VLSI Training{% endblock %}
+{% block meta_description %}Learn from ASIC industry veterans and get dedicated placement support at Ankira Solution.
+Mock interviews, resume building, and career guidance.{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="page-header text-center">
+    <div class="container page-header-content">
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>›</span>
+            <span>Faculty & Placement</span>
+        </div>
+        <h1 class="page-title">Faculty & Placement Support</h1>
+        <p class="page-subtitle">Learn from industry veterans and get dedicated, comprehensive support to kickstart your
+            semiconductor career.</p>
+    </div>
+</section>
+
+<!-- FACULTY SECTION -->
+<section class="py-section bg-white">
+    <div class="container">
+        <div class="section-title-wrapper text-center">
+            <span class="section-label">Our Trainers</span>
+            <h2 class="section-title">Expert Faculty with <span>Industry Experience</span></h2>
+            <p class="section-subtitle">At Ankira Solution, you are mentored by professionals with real-world exposure
+                in ASIC and FPGA design, not just textbook instructors.</p>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-icon">👨‍🏫</span>
+                <h3>Industry Veterans</h3>
+                <p>Trainers with 10+ years of active experience at top semiconductor companies like Intel, Qualcomm,
+                    Texas Instruments, and more.</p>
+            </div>
+            <div class="metric-card">
+                <span class="metric-icon">🛠️</span>
+                <h3>Project-Based Approach</h3>
+                <p>Every module is taught with practical examples mirroring real-world tapeout scenarios. Theory always
+                    follows practice.</p>
+            </div>
+            <div class="metric-card">
+                <span class="metric-icon">🎯</span>
+                <h3>1-on-1 Mentorship</h3>
+                <p>Small batch sizes allow our faculty to focus on individual progress, doubt clearing, and personalized
+                    career guidance.</p>
+            </div>
+        </div>
+
+        <!-- Faculty Approach Points -->
+        <div class="about-checks mt-5" style="max-width: 780px; margin: 3rem auto 0;">
+            <div class="about-check-item">
+                <div class="check-icon">✓</div>
+                <div class="check-text">
+                    <h5>Real Semiconductor Project Experience</h5>
+                    <p>Our faculty have designed chips that are actually in production, bringing real chip design war
+                        stories to the classroom.</p>
+                </div>
+            </div>
+            <div class="about-check-item">
+                <div class="check-icon">✓</div>
+                <div class="check-text">
+                    <h5>Interview-Focused Teaching Style</h5>
+                    <p>Every concept is taught keeping VLSI interviews in mind — covering not just the "what" but the
+                        "why" and "how" companies test it.</p>
+                </div>
+            </div>
+            <div class="about-check-item">
+                <div class="check-icon">✓</div>
+                <div class="check-text">
+                    <h5>Tool-Centric Training Sessions</h5>
+                    <p>Cadence, Synopsys, and open-source EDA tools are central to every session, not an afterthought.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PLACEMENT SECTION -->
+<section class="py-section bg-light">
+    <div class="container">
+        <div class="placement-grid">
+            <!-- Visual Left -->
+            <div class="placement-visual">
+                <div class="placement-visual-title">Your Path to a VLSI Career</div>
+                <div class="placement-visual-sub">Structured support from Day 1 to Offer Letter</div>
+                <div class="placement-step">
+                    <div class="placement-step-num">1</div>
+                    <span class="placement-step-text">Complete Training Program</span>
+                </div>
+                <div class="placement-step">
+                    <div class="placement-step-num">2</div>
+                    <span class="placement-step-text">Build Portfolio Projects</span>
+                </div>
+                <div class="placement-step">
+                    <div class="placement-step-num">3</div>
+                    <span class="placement-step-text">Resume & LinkedIn Optimization</span>
+                </div>
+                <div class="placement-step">
+                    <div class="placement-step-num">4</div>
+                    <span class="placement-step-text">Mock Interview Preparation</span>
+                </div>
+                <div class="placement-step">
+                    <div class="placement-step-num">5</div>
+                    <span class="placement-step-text">Referral & Job Applications</span>
+                </div>
+                <div class="placement-step">
+                    <div class="placement-step-num" style="background: var(--success);">✓</div>
+                    <span class="placement-step-text">Land Your Dream VLSI Job</span>
+                </div>
+            </div>
+
+            <!-- Benefits Right -->
+            <div>
+                <span class="section-label">Placement Support</span>
+                <h2 class="section-title" style="margin-top: 0.75rem;">Dedicated <span>Placement Assistance</span></h2>
+                <p style="color: var(--text-mid); margin-bottom: 2rem;">Our training doesn't end in the classroom. We
+                    provide comprehensive support to help you land your dream job in the VLSI domain.</p>
+
+                <div class="placement-benefits-list">
+                    <div class="placement-benefit">
+                        <div class="benefit-icon">📄</div>
+                        <div class="benefit-text">
+                            <h4>Resume Preparation & ATS Optimization</h4>
+                            <p>Craft a professional, ATS-friendly resume that highlights your VLSI projects, skills, and
+                                tool proficiency to get past automated screening.</p>
+                        </div>
+                    </div>
+                    <div class="placement-benefit">
+                        <div class="benefit-icon">🔗</div>
+                        <div class="benefit-text">
+                            <h4>LinkedIn Profile Optimization</h4>
+                            <p>Build a strong professional network and a compelling LinkedIn profile that attracts
+                                semiconductor recruiters and hiring managers.</p>
+                        </div>
+                    </div>
+                    <div class="placement-benefit">
+                        <div class="benefit-icon">🎤</div>
+                        <div class="benefit-text">
+                            <h4>Mock Technical Interviews</h4>
+                            <p>Rigorous practice sessions replicating actual VLSI industry interviews across RTL, STA,
+                                timing analysis, and physical design topics.</p>
+                        </div>
+                    </div>
+                    <div class="placement-benefit">
+                        <div class="benefit-icon">🧭</div>
+                        <div class="benefit-text">
+                            <h4>Referral & Internship Guidance</h4>
+                            <p>Leverage our extensive industry network for referrals and explore available internship
+                                opportunities at semiconductor companies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHO CAN JOIN -->
+<section class="audience-section">
+    <div class="container text-center">
+        <span class="section-label"
+            style="color: var(--accent); background: rgba(247,183,49,0.15); border-color: rgba(247,183,49,0.3);">Eligibility</span>
+        <h2 class="section-title mt-3" style="color: white;">Who Can <span style="color: var(--accent);">Join?</span>
+        </h2>
+        <p style="color: rgba(255,255,255,0.6); max-width: 540px; margin: 1rem auto 0;">Our programs are designed for a
+            wide range of learners at different stages of their engineering journey.</p>
+
+        <div class="audience-grid">
+            <div class="audience-card">
+                <span class="audience-icon">🎓</span>
+                <span>B.Tech / M.Tech (ECE, EEE, EIE)</span>
+            </div>
+            <div class="audience-card">
+                <span class="audience-icon">📚</span>
+                <span>Final Year Engineering Students</span>
+            </div>
+            <div class="audience-card">
+                <span class="audience-icon">💼</span>
+                <span>Working Professionals Upskilling</span>
+            </div>
+            <div class="audience-card">
+                <span class="audience-icon">🔄</span>
+                <span>Career Switchers to Semiconductor</span>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">🚀 Apply Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section text-center">
+    <div class="container">
+        <h2>"From Classroom to <span style="color: var(--accent);">Silicon.</span>"</h2>
+        <p>Our placement support is as strong as our technical training. Join Ankira Solution and take the fast lane to
+            your semiconductor career.</p>
+        <div class="cta-buttons-group">
+            <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">📝 Enroll Today</a>
+            <a href="{% url 'courses' %}" class="btn btn-outline btn-lg">🎓 View Our Courses</a>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

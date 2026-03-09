@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Reviews | Ankira Solution{% endblock %}
+{% block meta_description %}Read what our VLSI students say about Ankira Solution's training programs. Real reviews from
+engineers who trained with us.{% endblock %}
+
+{% block content %}
+
+<!-- ── Page Hero ── -->
+<section class="reviews-page-hero">
+    <div class="container">
+        <span class="section-label"
+            style="background:rgba(247,183,49,0.15); color:#f7b731; border-color:rgba(247,183,49,0.3);">Student
+            Testimonials</span>
+        <h1 class="reviews-page-title">What Our <span>Students Say</span></h1>
+        <p class="reviews-page-subtitle">Real experiences from engineers who trained with us and are now working in the
+            semiconductor industry.</p>
+
+        <!-- Rating Summary Bar -->
+        <div class="rating-summary">
+            <div class="rating-big-num">{{ avg_rating|floatformat:1 }}</div>
+            <div class="rating-summary-right">
+                <div class="rating-stars-big">
+                    {% for i in "12345" %}
+                    {% if forloop.counter <= avg_rating_int %} <span class="rs-star filled">★</span>
+                        {% else %}
+                        <span class="rs-star">☆</span>
+                        {% endif %}
+                        {% endfor %}
+                </div>
+                <div class="rating-summary-label">Based on {{ total_reviews }} student review{{ total_reviews|pluralize}}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── All Reviews Grid ── -->
+<section class="reviews-page-body">
+    <div class="container">
+
+        {% if reviews %}
+        <div class="reviews-page-grid">
+            {% for review in reviews %}
+            <div class="rp-card">
+                <div class="rp-card-top">
+                    <div class="rp-avatar">{{ review.name|slice:":1"|upper }}</div>
+                    <div class="rp-meta">
+                        <div class="rp-name">{{ review.name }}</div>
+                        <div class="rp-course">{{ review.get_course_display|default:"VLSI Training" }}</div>
+                    </div>
+                    <div class="rp-date">{{ review.submitted_at|date:"d M Y" }}</div>
+                </div>
+                <div class="rp-stars">
+                    {% for i in "12345" %}
+                    {% if forloop.counter <= review.rating %} <span class="rp-star filled">★</span>
+                        {% else %}
+                        <span class="rp-star">☆</span>
+                        {% endif %}
+                        {% endfor %}
+                        <span class="rp-rating-num">{{ review.rating }}/5</span>
+                </div>
+                <p class="rp-text">"{{ review.text }}"</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <div class="reviews-page-empty">
+            <div style="font-size:4rem; margin-bottom:1rem; opacity:0.3;">⭐</div>
+            <h3>No Reviews Yet</h3>
+            <p>Be the first to share your experience after completing a course!</p>
+            <a href="{% url 'home' %}#review-form" class="btn btn-primary" style="margin-top:1.5rem;">✍️ Write a
+                Review</a>
+        </div>
+        {% endif %}
+
+        <!-- Write a Review CTA -->
+        <div class="reviews-page-cta">
+            <div class="rp-cta-text">
+                <h3>Completed a Course with Us?</h3>
+                <p>Share your honest experience and help future VLSI engineers make the right choice.</p>
+            </div>
+            <a href="{% url 'home' %}#review-form" class="btn btn-primary btn-lg">⭐ Write a Review</a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

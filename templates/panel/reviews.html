@@ -1,0 +1,133 @@
+{% extends 'panel/base_panel.html' %}
+
+{% block title %}Manage Reviews{% endblock %}
+{% block page_title %}Student Reviews{% endblock %}
+{% block nav_reviews %}active{% endblock %}
+
+{% block content %}
+
+<!-- Filter Tabs + Summary -->
+<div class="panel-card">
+    <div class="panel-card-header">
+        <div class="panel-card-title">⭐ All Reviews</div>
+        <div class="filter-tabs">
+            <a href="{% url 'panel_reviews' %}?status=all"
+                class="filter-tab {% if status_filter == 'all' %}active{% endif %}">
+                All ({{ pending_count|add:approved_count }})
+            </a>
+            <a href="{% url 'panel_reviews' %}?status=pending"
+                class="filter-tab {% if status_filter == 'pending' %}active gold{% endif %}">
+                ⏳ Pending ({{ pending_count }})
+            </a>
+            <a href="{% url 'panel_reviews' %}?status=approved"
+                class="filter-tab {% if status_filter == 'approved' %}active{% endif %}">
+                ✅ Approved ({{ approved_count }})
+            </a>
+        </div>
+    </div>
+
+    {% if reviews %}
+    <div class="panel-table-wrap">
+        <table class="panel-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for review in reviews %}
+                <tr>
+                    <td class="td-muted">{{ forloop.counter }}</td>
+                    <td>
+                        <div class="td-name">{{ review.name }}</div>
+                        <div class="td-muted">{{ review.email }}</div>
+                    </td>
+                    <td>
+                        <div class="td-muted">{{ review.get_course_display|default:"—" }}</div>
+                    </td>
+                    <td>
+                        <div class="stars">
+                            {% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}<span
+                                class="empty">☆</span>{% endif %}{% endfor %}
+                        </div>
+                        <div class="td-muted">{{ review.rating }}/5</div>
+                    </td>
+                    <td>
+                        <div style="max-width:280px; font-size:0.875rem; color:#4a4a6a; line-height:1.5;">
+                            {{ review.text|truncatechars:120 }}
+                        </div>
+                    </td>
+                    <td>
+                        {% if review.is_approved %}
+                        <span class="badge-status approved">✅ Approved</span>
+                        {% else %}
+                        <span class="badge-status pending">⏳ Pending</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="td-muted">{{ review.submitted_at|date:"d M Y" }}<br>{{ review.submitted_at|time:"h:i
+                            A" }}</div>
+                    </td>
+                    <td>
+                        <div class="action-btns">
+                            {% if not review.is_approved %}
+                            <form method="POST" action="{% url 'panel_approve_review' review.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-action btn-approve">✓ Approve</button>
+                            </form>
+                            {% endif %}
+                            <form method="POST" action="{% url 'panel_reject_review' review.id %}" class="delete-form">
+                                {% csrf_token %}
+                                <button type="button" class="btn-action btn-reject" onclick="confirmDelete(this)">
+                                    ✕ Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <div class="empty-icon">⭐</div>
+        <h4>No Reviews Found</h4>
+        <p>{% if status_filter == 'pending' %}No pending reviews. All caught up!{% elif status_filter == 'approved' %}No
+            approved reviews yet.{% else %}No student reviews have been submitted yet.{% endif %}</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function confirmDelete(btn) {
+        if (btn.dataset.confirmed === 'yes') {
+            btn.closest('form').submit();
+        } else {
+            btn.dataset.confirmed = 'yes';
+            btn.textContent = '⚠ Confirm Delete?';
+            btn.style.background = '#e74c3c';
+            btn.style.color = 'white';
+            btn.style.borderColor = '#e74c3c';
+            // Reset after 3 seconds if not clicked again
+            setTimeout(function () {
+                btn.dataset.confirmed = '';
+                btn.textContent = '✕ Delete';
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            }, 3000);
+        }
+    }
+</script>
+{% endblock %}

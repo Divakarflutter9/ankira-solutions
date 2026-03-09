@@ -1,0 +1,190 @@
+{% extends 'panel/base_panel.html' %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard Overview{% endblock %}
+{% block nav_dashboard %}active{% endblock %}
+
+{% block content %}
+
+<!-- Stat Cards -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon gold">⏳</div>
+        <div class="stat-info">
+            <div class="stat-number">{{ stats.pending_reviews }}</div>
+            <div class="stat-label">Pending Reviews</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon green">✅</div>
+        <div class="stat-info">
+            <div class="stat-number">{{ stats.approved_reviews }}</div>
+            <div class="stat-label">Approved Reviews</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon blue">⭐</div>
+        <div class="stat-info">
+            <div class="stat-number">{{ stats.total_reviews }}</div>
+            <div class="stat-label">Total Reviews</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon red">📬</div>
+        <div class="stat-info">
+            <div class="stat-number">{{ stats.unread_inquiries }}</div>
+            <div class="stat-label">Unread Inquiries</div>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon purple">📋</div>
+        <div class="stat-info">
+            <div class="stat-number">{{ stats.total_inquiries }}</div>
+            <div class="stat-label">Total Inquiries</div>
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard Grid -->
+<div class="dashboard-grid">
+
+    <!-- Pending Reviews -->
+    <div class="panel-card">
+        <div class="panel-card-header">
+            <div class="panel-card-title">⏳ Pending Reviews</div>
+            <a href="{% url 'panel_reviews' %}?status=pending" class="filter-tab"
+                style="font-size:0.8rem; padding:5px 14px;">View All →</a>
+        </div>
+        {% if pending_reviews %}
+        <div class="panel-table-wrap">
+            <table class="panel-table">
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in pending_reviews %}
+                    <tr>
+                        <td>
+                            <div class="td-name">{{ review.name }}</div>
+                            <div class="td-muted">{{ review.get_course_display }}</div>
+                        </td>
+                        <td>
+                            <div class="stars">
+                                {% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}<span
+                                    class="empty">☆</span>{% endif %}{% endfor %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="td-preview">{{ review.text }}</div>
+                        </td>
+                        <td>
+                            <div class="action-btns">
+                                <form method="POST" action="{% url 'panel_approve_review' review.id %}"
+                                    style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-action btn-approve">✓ Approve</button>
+                                </form>
+                                <form method="POST" action="{% url 'panel_reject_review' review.id %}"
+                                    style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="button" class="btn-action btn-reject" onclick="confirmDelete(this)">✕
+                                        Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">🎉</div>
+            <h4>All Caught Up!</h4>
+            <p>No pending reviews to approve.</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Recent Inquiries -->
+    <div class="panel-card">
+        <div class="panel-card-header">
+            <div class="panel-card-title">📬 Unread Inquiries</div>
+            <a href="{% url 'panel_inquiries' %}?status=unread" class="filter-tab"
+                style="font-size:0.8rem; padding:5px 14px;">View All →</a>
+        </div>
+        {% if recent_inquiries %}
+        <div class="panel-table-wrap">
+            <table class="panel-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inq in recent_inquiries %}
+                    <tr>
+                        <td>
+                            <div class="td-name">{{ inq.name }}</div>
+                            <div class="td-muted">{{ inq.email }}</div>
+                        </td>
+                        <td>
+                            <div class="td-muted">{{ inq.get_course_display|default:"General" }}</div>
+                        </td>
+                        <td>
+                            <div class="td-muted">{{ inq.submitted_at|date:"d M, Y" }}</div>
+                        </td>
+                        <td>
+                            <form method="POST" action="{% url 'panel_mark_inquiry_read' inq.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn-action btn-read">✓ Mark Read</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">✉️</div>
+            <h4>No Unread Inquiries</h4>
+            <p>All inquiries have been read.</p>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function confirmDelete(btn) {
+        if (btn.dataset.confirmed === 'yes') {
+            btn.closest('form').submit();
+        } else {
+            btn.dataset.confirmed = 'yes';
+            btn.textContent = '⚠ Confirm?';
+            btn.style.background = '#e74c3c';
+            btn.style.color = 'white';
+            btn.style.borderColor = '#e74c3c';
+            setTimeout(function () {
+                btn.dataset.confirmed = '';
+                btn.textContent = '✕ Delete';
+                btn.style.background = '';
+                btn.style.color = '';
+                btn.style.borderColor = '';
+            }, 3000);
+        }
+    }
+</script>
+{% endblock %}

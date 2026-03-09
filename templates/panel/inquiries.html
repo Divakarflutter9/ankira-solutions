@@ -1,0 +1,97 @@
+{% extends 'panel/base_panel.html' %}
+
+{% block title %}Manage Inquiries{% endblock %}
+{% block page_title %}Course Inquiries{% endblock %}
+{% block nav_inquiries %}active{% endblock %}
+
+{% block content %}
+
+<div class="panel-card">
+    <div class="panel-card-header">
+        <div class="panel-card-title">📋 All Inquiries</div>
+        <div class="filter-tabs">
+            <a href="{% url 'panel_inquiries' %}" class="filter-tab {% if status_filter == 'all' %}active{% endif %}">
+                All ({{ unread_count|add:read_count }})
+            </a>
+            <a href="{% url 'panel_inquiries' %}?status=unread"
+                class="filter-tab {% if status_filter == 'unread' %}active gold{% endif %}">
+                📬 Unread ({{ unread_count }})
+            </a>
+            <a href="{% url 'panel_inquiries' %}?status=read"
+                class="filter-tab {% if status_filter == 'read' %}active{% endif %}">
+                ✓ Read ({{ read_count }})
+            </a>
+        </div>
+    </div>
+
+    {% if inquiries %}
+    <div class="panel-table-wrap">
+        <table class="panel-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Course Interested</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inq in inquiries %}
+                <tr>
+                    <td class="td-muted">{{ forloop.counter }}</td>
+                    <td>
+                        <div class="td-name">{{ inq.name }}</div>
+                    </td>
+                    <td>
+                        <div style="font-size:0.875rem;">{{ inq.email }}</div>
+                        <div class="td-muted">{{ inq.phone }}</div>
+                    </td>
+                    <td>
+                        <div class="td-muted">{{ inq.get_course_display|default:"General Inquiry" }}</div>
+                    </td>
+                    <td>
+                        <div class="td-preview" style="max-width:220px;">
+                            {{ inq.message|default:"—"|truncatechars:80 }}
+                        </div>
+                    </td>
+                    <td>
+                        {% if inq.is_read %}
+                        <span class="badge-status read">✓ Read</span>
+                        {% else %}
+                        <span class="badge-status unread">● Unread</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="td-muted">{{ inq.submitted_at|date:"d M Y" }}<br>{{ inq.submitted_at|time:"h:i A" }}
+                        </div>
+                    </td>
+                    <td>
+                        {% if not inq.is_read %}
+                        <form method="POST" action="{% url 'panel_mark_inquiry_read' inq.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-action btn-read">✓ Mark Read</button>
+                        </form>
+                        {% else %}
+                        <span class="td-muted" style="font-size:0.8rem;">—</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <div class="empty-icon">📋</div>
+        <h4>No Inquiries Found</h4>
+        <p>{% if status_filter == 'unread' %}No unread inquiries. All caught up!{% elif status_filter == 'read' %}No
+            read inquiries yet.{% else %}No inquiries have been submitted yet.{% endif %}</p>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

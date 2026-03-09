@@ -1,0 +1,605 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | Ankira Solution – VLSI Training Institute{% endblock %}
+{% block meta_description %}Ankira Solution is an industry-oriented VLSI training institute. Learn RTL to GDSII with
+hands-on tools, real-time projects, and expert mentorship.{% endblock %}
+
+{% block content %}
+
+<!-- ====== HERO SECTION ====== -->
+<section class="hero-section">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-grid-bg"></div>
+    <div class="hero-circuit"></div>
+
+    <div class="container">
+        <div class="hero-content-wrapper">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    #1 VLSI Training Institute
+                </div>
+                <h1 class="hero-headline">
+                    Build Your Career<br>
+                    <span class="highlight">in VLSI</span><br>
+                    with Ankira Solution
+                </h1>
+                <p class="hero-subheadline">
+                    Industry-oriented training in VLSI Design, FPGA, ASIC Design, and Physical Design with practical
+                    projects and expert mentorship.
+                </p>
+                <p style="color:rgba(255,255,255,0.6); font-size:0.95rem; margin-bottom:1.75rem; line-height:1.7;">
+                    Empowering students and professionals to become VLSI industry-ready engineers.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">
+                        ✨ Enroll Now
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">
+                        📅 Book Free Demo
+                    </a>
+                    <a href="#" class="btn btn-outline btn-lg">
+                        📄 Download Brochure
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="number">500+</div>
+                        <div class="label">Students Trained</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="number">5+</div>
+                        <div class="label">Years of Experience</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="number">95%</div>
+                        <div class="label">Placement Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual Card -->
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-dots">
+                            <span class="d1"></span>
+                            <span class="d2"></span>
+                            <span class="d3"></span>
+                        </div>
+                        <span class="hero-card-title">ASIC Design Flow</span>
+                    </div>
+                    <div class="hero-flow-steps">
+                        <div class="flow-step">
+                            <div class="flow-step-icon" style="background:rgba(58,134,255,0.25);">📐</div>
+                            <span class="flow-step-label">RTL Design & Verilog</span>
+                            <span class="flow-step-arrow">✓</span>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-icon" style="background:rgba(247,183,49,0.25);">🔬</div>
+                            <span class="flow-step-label">Synthesis & Simulation</span>
+                            <span class="flow-step-arrow">✓</span>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-icon" style="background:rgba(46,204,113,0.25);">⏱️</div>
+                            <span class="flow-step-label">Static Timing Analysis</span>
+                            <span class="flow-step-arrow">✓</span>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-icon" style="background:rgba(231,76,60,0.25);">🗺️</div>
+                            <span class="flow-step-label">Floorplan & Placement</span>
+                            <span class="flow-step-arrow">✓</span>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-icon" style="background:rgba(155,89,182,0.25);">🌲</div>
+                            <span class="flow-step-label">Clock Tree Synthesis</span>
+                            <span class="flow-step-arrow">✓</span>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-step-icon" style="background:rgba(26,188,156,0.25);">🔌</div>
+                            <span class="flow-step-label">Routing & GDSII Signoff</span>
+                            <span class="flow-step-arrow">✓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== ABOUT SECTION ====== -->
+<section class="py-section bg-white">
+    <div class="container">
+        <div class="about-grid">
+            <!-- Image / Visual Area -->
+            <div class="about-image-area">
+                <div class="about-img-card">
+                    <div>
+                        <div class="about-card-title">Ankira Solution</div>
+                        <div class="about-card-subtitle">VLSI Training Institute — Bangalore</div>
+                    </div>
+                    <div class="about-stats-grid">
+                        <div class="about-stat-box">
+                            <div class="about-stat-num">5+</div>
+                            <div class="about-stat-label">Years of Experience</div>
+                        </div>
+                        <div class="about-stat-box">
+                            <div class="about-stat-num">500+</div>
+                            <div class="about-stat-label">Students Trained</div>
+                        </div>
+                        <div class="about-stat-box">
+                            <div class="about-stat-num">10+</div>
+                            <div class="about-stat-label">Industry Experts</div>
+                        </div>
+                        <div class="about-stat-box">
+                            <div class="about-stat-num">4</div>
+                            <div class="about-stat-label">Core Programs</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-badge">
+                    <span class="badge-icon">🏆</span>
+                    <span class="badge-text">Industry-Recognized<br>Training</span>
+                </div>
+            </div>
+
+            <!-- Text Area -->
+            <div class="about-text-area">
+                <span class="section-label">About Us</span>
+                <h2 class="section-title">Specialized in<br><span>VLSI Education &amp; Training</span></h2>
+                <p style="color: var(--text-mid); line-height: 1.85; margin-bottom: 1rem;">
+                    Ankira Solution is a specialized VLSI training institution dedicated to developing skilled engineers
+                    for the semiconductor industry with <strong>5 years of experience</strong> training students.
+                </p>
+                <p style="color: var(--text-mid); line-height: 1.85; margin-bottom:1rem;">
+                    We provide practical, industry-focused training in:
+                </p>
+                <ul style="color:var(--text-mid); line-height:2; padding-left:1.25rem; margin-bottom:1.25rem;">
+                    <li>VLSI Design</li>
+                    <li>Digital System Design</li>
+                    <li>Verilog</li>
+                    <li>ASIC Design Flow</li>
+                    <li>Physical Design</li>
+                </ul>
+                <p style="color: var(--text-mid); line-height: 1.85;">
+                    Our programs combine strong theoretical foundations with real-time project experience, enabling
+                    students
+                    to confidently enter the semiconductor industry.
+                </p>
+                <div class="about-checks">
+                    <div class="about-check-item">
+                        <div class="check-icon">✓</div>
+                        <div class="check-text">
+                            <h5>Hands-On Project Training</h5>
+                            <p>Real-time project experience with industry-standard design flows</p>
+                        </div>
+                    </div>
+                    <div class="about-check-item">
+                        <div class="check-icon">✓</div>
+                        <div class="check-text">
+                            <h5>Expert Faculty</h5>
+                            <p>Trainers from the VLSI domain with real-world design experience</p>
+                        </div>
+                    </div>
+                    <div class="about-check-item">
+                        <div class="check-icon">✓</div>
+                        <div class="check-text">
+                            <h5>Placement Guidance</h5>
+                            <p>Internship opportunities and career support for every student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a href="{% url 'courses' %}" class="btn btn-primary">Explore Courses</a>
+                    <a href="{% url 'faculty' %}" class="btn btn-outline-primary mt-2" style="margin-left: 1rem;">Our
+                        Faculty</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== COURSES OVERVIEW SECTION ====== -->
+<section class="py-section bg-light">
+    <div class="container">
+        <div class="section-title-wrapper text-center">
+            <span class="section-label">What We Offer</span>
+            <h2 class="section-title">Our Specialized <span>Training Programs</span></h2>
+            <p class="section-subtitle">
+                Comprehensive, industry-aligned courses designed to make you job-ready in the VLSI domain from day one.
+            </p>
+        </div>
+
+        <div class="course-cards-grid">
+            <!-- Digital VLSI Design -->
+            <div class="course-card">
+                <div class="course-card-top">
+                    <span class="course-icon-top">🔌</span>
+                    <div class="course-card-title">Digital VLSI Design</div>
+                    <div class="course-card-subtitle">Verilog / VHDL &amp; FPGA</div>
+                </div>
+                <div class="course-card-body">
+                    <ul class="course-topics">
+                        <li><span class="topic-arrow">▶</span> Digital Logic Design Fundamentals</li>
+                        <li><span class="topic-arrow">▶</span> Verilog / VHDL Programming</li>
+                        <li><span class="topic-arrow">▶</span> Simulation &amp; Verification</li>
+                        <li><span class="topic-arrow">▶</span> FPGA Implementation</li>
+                        <li><span class="topic-arrow">▶</span> ASIC Design Flow Introduction</li>
+                    </ul>
+                    <a href="{% url 'courses' %}" class="btn btn-outline-primary">View Full Curriculum</a>
+                </div>
+            </div>
+
+            <!-- Physical Design (Featured) -->
+            <div class="course-card featured">
+                <div class="popular-ribbon">Most Popular</div>
+                <div class="course-card-top">
+                    <span class="course-icon-top">🏗️</span>
+                    <div class="course-card-title">Physical Design</div>
+                    <div class="course-card-subtitle">Complete ASIC Physical Design Flow</div>
+                </div>
+                <div class="course-card-body">
+                    <ul class="course-topics">
+                        <li><span class="topic-arrow">▶</span> Floorplanning</li>
+                        <li><span class="topic-arrow">▶</span> Placement</li>
+                        <li><span class="topic-arrow">▶</span> Clock Tree Synthesis (CTS)</li>
+                        <li><span class="topic-arrow">▶</span> Routing</li>
+                        <li><span class="topic-arrow">▶</span> Static Timing Analysis (STA)</li>
+                    </ul>
+                    <a href="{% url 'courses' %}" class="btn btn-primary">View Full Curriculum</a>
+                </div>
+            </div>
+
+            <!-- FPGA Design -->
+            <div class="course-card">
+                <div class="course-card-top">
+                    <span class="course-icon-top">📡</span>
+                    <div class="course-card-title">FPGA Design</div>
+                    <div class="course-card-subtitle">Hardware Implementation</div>
+                </div>
+                <div class="course-card-body">
+                    <ul class="course-topics">
+                        <li><span class="topic-arrow">▶</span> FPGA Architecture &amp; Fundamentals</li>
+                        <li><span class="topic-arrow">▶</span> Hardware Description with Verilog</li>
+                        <li><span class="topic-arrow">▶</span> Synthesis &amp; Implementation</li>
+                        <li><span class="topic-arrow">▶</span> Timing Constraints &amp; Analysis</li>
+                        <li><span class="topic-arrow">▶</span> Real Hardware Project</li>
+                    </ul>
+                    <a href="{% url 'courses' %}" class="btn btn-outline-primary">View Full Curriculum</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Internship Program Banner -->
+        <div
+            style="margin-top:2rem; background:linear-gradient(135deg,#0a2463,#1e4db7); border-radius:16px; padding:2rem 2.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;">
+            <div>
+                <div style="font-size:1.5rem; margin-bottom:0.5rem;">🎓</div>
+                <h3 style="color:white; font-size:1.2rem; font-weight:800; margin-bottom:0.35rem;">VLSI Internship
+                    Program</h3>
+                <p style="color:rgba(255,255,255,0.75); font-size:0.9rem; margin:0;">Practical industry-level projects
+                    and real design flow exposure to bridge classroom learning with professional work.</p>
+            </div>
+            <a href="{% url 'contact' %}" class="btn btn-accent">Apply for Internship →</a>
+        </div>
+    </div>
+
+    <!-- ====== WHY CHOOSE US SECTION ====== -->
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title-wrapper text-center">
+                <span class="section-label"
+                    style="color: var(--accent); background: rgba(247,183,49,0.15); border-color: rgba(247,183,49,0.3);">Why
+                    Ankira Solution</span>
+                <h2 class="section-title" style="color: white;">Why Choose <span style="color: var(--accent);">Ankira
+                        Solution?</span></h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.65);">
+                    We're more than a training institute — we're your career partner in the semiconductor domain.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">📚</div>
+                    <h4>Industry-Relevant Curriculum</h4>
+                    <p>Courses designed to directly match what semiconductor companies look for in VLSI engineers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">👨‍🏫</div>
+                    <h4>Experienced VLSI Trainers</h4>
+                    <p>Learn from domain experts with real industry experience in VLSI design and chip development.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">💻</div>
+                    <h4>Hands-On Project Learning</h4>
+                    <p>Every module includes practical exercises and real-world design projects for true industry
+                        readiness.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">🎓</div>
+                    <h4>Internship Opportunities</h4>
+                    <p>Get hands-on exposure through our structured VLSI internship program with real design tasks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">💼</div>
+                    <h4>Placement Guidance</h4>
+                    <p>Dedicated placement support including resume building, interview preparation, and referrals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">👥</div>
+                    <h4>Small Batch Personalized Training</h4>
+                    <p>Limited batch sizes ensure individual attention and personalized mentorship for every student.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== VISION & MISSION ====== -->
+    <section class="vm-section py-section">
+        <div class="container">
+            <div class="section-title-wrapper text-center">
+                <span class="section-label">Our Purpose</span>
+                <h2 class="section-title">Vision & <span>Mission</span></h2>
+            </div>
+            <div class="vm-grid">
+                <div class="vm-card vision">
+                    <div class="vm-icon">🔭</div>
+                    <h3>Our Vision</h3>
+                    <p>To become a leading centre of excellence in VLSI education and semiconductor training, empowering
+                        students with advanced technical knowledge, innovation, and practical expertise to contribute to
+                        the
+                        global semiconductor industry.</p>
+                    <p style="margin-top:0.75rem; font-size:0.9rem; opacity:0.85;">We aspire to create a learning
+                        environment where students develop strong design skills, research mindset, and industry
+                        readiness,
+                        enabling them to build successful careers in VLSI design and chip development.</p>
+                </div>
+                <div class="vm-card mission">
+                    <div class="vm-icon">🎯</div>
+                    <h3>Our Mission</h3>
+                    <p>To empower aspiring engineers with strong knowledge and practical skills in VLSI and
+                        semiconductor
+                        technologies. We strive to provide industry-oriented training, hands-on project experience, and
+                        expert mentorship that prepare students to meet the evolving demands of the global semiconductor
+                        industry.</p>
+                    <p style="margin-top:0.75rem; font-size:0.9rem; opacity:0.85;">We aim to bridge the gap between
+                        academic
+                        learning and real-world VLSI design practices through training in RTL design, FPGA development,
+                        ASIC
+                        design flow, and physical design methodologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TESTIMONIALS: WHAT STUDENTS SAY ====== -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-bg-decor"></div>
+        <div class="container" style="position:relative; z-index:1;">
+            <div class="section-title-wrapper text-center">
+                <span class="section-label"
+                    style="background:rgba(247,183,49,0.15); color:var(--accent); border-color:rgba(247,183,49,0.3);">Student
+                    Feedback</span>
+                <h2 class="section-title" style="color:white;">What Our <span style="color:var(--accent);">Students
+                        Say</span></h2>
+                <p class="section-subtitle" style="color:rgba(255,255,255,0.6);">
+                    Real experiences from engineers who trained with us and are now working in the semiconductor
+                    industry.
+                </p>
+            </div>
+
+            {% if approved_reviews %}
+            <div class="testimonials-grid">
+                {% for review in approved_reviews %}
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-mark">"</div>
+                    <div class="testimonial-stars">
+                        {% for i in "12345" %}{% if forloop.counter <= review.rating %}<span class="ts-star filled">
+                            ★</span>{% else %}<span class="ts-star">☆</span>{% endif %}{% endfor %}
+                    </div>
+                    <p class="testimonial-text">{{ review.text }}</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">{{ review.name|slice:":1"|upper }}</div>
+                        <div class="testimonial-meta">
+                            <div class="testimonial-name">{{ review.name }}</div>
+                            <div class="testimonial-course">{{ review.get_course_display|default:"VLSI Training" }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- View More Reviews Button -->
+            <div style="text-align:center; margin-top:2.5rem;">
+                <a href="{% url 'reviews_page' %}" class="btn-view-all-reviews">
+                    View All Reviews →
+                </a>
+            </div>
+            {% else %}
+            <div class="testimonials-empty">
+                <div class="testimonials-empty-icon">⭐</div>
+                <h4>No reviews yet</h4>
+                <p>Be the first to share your experience after completing a course!</p>
+                <a href="#review-form" class="btn btn-accent" style="margin-top:1rem;">✍️ Write a Review</a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- ====== REVIEW SUBMISSION FORM ====== -->
+    <section class="review-submit-section" id="review-form">
+        <div class="container">
+            <div class="review-submit-layout">
+
+                <!-- Left: Prompt Panel -->
+                <div class="review-prompt-panel">
+                    <div class="review-prompt-icon">✍️</div>
+                    <h2>Share Your <span>Experience</span></h2>
+                    <p>Your honest review helps future students choose the right course and motivates our faculty to
+                        keep
+                        delivering excellence.</p>
+                    <ul class="review-prompt-points">
+                        <li>
+                            <span class="rp-dot"></span>
+                            <span>Quick — takes less than 2 minutes</span>
+                        </li>
+                        <li>
+                            <span class="rp-dot"></span>
+                            <span>Reviewed by admin before publishing</span>
+                        </li>
+                        <li>
+                            <span class="rp-dot"></span>
+                            <span>Helps thousands of aspiring VLSI engineers</span>
+                        </li>
+                    </ul>
+                    <div class="review-prompt-badge">
+                        <span style="font-size:1.5rem;">🏆</span>
+                        <div>
+                            <div style="font-weight:700; font-size:0.9rem;">Top-Rated VLSI Institute</div>
+                            <div style="font-size:0.8rem; opacity:0.7;">as rated by our students</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Form -->
+                <div class="review-form-box">
+                    <div class="review-form-header">
+                        <h3>Submit Your Review</h3>
+                        <p>We read every review and take feedback seriously.</p>
+                    </div>
+
+                    {% if review_success %}
+                    <div class="review-alert review-alert-success">
+                        ✅ Thank you! Your review has been submitted and is pending approval. It will appear on the
+                        website
+                        once approved.
+                    </div>
+                    {% endif %}
+                    {% if review_error %}
+                    <div class="review-alert review-alert-error">
+                        ⚠️ {{ review_error }}
+                    </div>
+                    {% endif %}
+
+                    <form method="POST" action="{% url 'home' %}#review-form" id="review-form-el">
+                        {% csrf_token %}
+
+                        <div class="rform-row">
+                            <div class="form-group">
+                                <label for="reviewer_name">Full Name <span class="required-star">*</span></label>
+                                <input type="text" id="reviewer_name" name="reviewer_name" class="form-control"
+                                    placeholder="e.g. Ravi Kumar" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reviewer_email">Email <span
+                                        style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
+                                <input type="email" id="reviewer_email" name="reviewer_email" class="form-control"
+                                    placeholder="you@example.com">
+                            </div>
+                        </div>
+
+                        <div class="rform-row">
+                            <div class="form-group">
+                                <label for="reviewer_course">Course Attended</label>
+                                <select id="reviewer_course" name="reviewer_course" class="form-control">
+                                    <option value="">-- Select a Course --</option>
+                                    <option value="frontend">VLSI Frontend Design (RTL &amp; Verification)</option>
+                                    <option value="backend">VLSI Backend Physical Design</option>
+                                    <option value="sta">Static Timing Analysis (STA)</option>
+                                    <option value="analog">Analog &amp; Mixed Signal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Rating <span class="required-star">*</span></label>
+                                <div class="star-rating" id="star-rating">
+                                    <input type="hidden" name="reviewer_rating" id="rating-value" value="5">
+                                    <span class="star-btn active" data-val="1">★</span>
+                                    <span class="star-btn active" data-val="2">★</span>
+                                    <span class="star-btn active" data-val="3">★</span>
+                                    <span class="star-btn active" data-val="4">★</span>
+                                    <span class="star-btn active" data-val="5">★</span>
+                                </div>
+                                <div class="rating-label" id="rating-label">Excellent</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reviewer_text">Your Review <span class="required-star">*</span></label>
+                            <textarea id="reviewer_text" name="reviewer_text" class="form-control" rows="5"
+                                placeholder="Tell us about your experience — what you liked, how the training helped your career, and what you'd say to future students..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
+                            ⭐ Submit My Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CTA SECTION ====== -->
+    <section class="cta-section text-center">
+        <div class="container">
+            <h2>"Design the Chips that Power the Future."</h2>
+            <p>Master RTL to GDSII with Confidence. Join Ankira Solution — From Classroom to Silicon.</p>
+            <div class="cta-buttons-group">
+                <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">🚀 Start Your Journey Today</a>
+                <a href="{% url 'courses' %}" class="btn btn-outline btn-lg">📖 Explore Courses First</a>
+            </div>
+        </div>
+    </section>
+
+    {% endblock content %}
+
+    {% block extra_js %}
+    <script>
+        (function () {
+            var stars = document.querySelectorAll('.star-btn');
+            var ratingInput = document.getElementById('rating-value');
+            var ratingLabel = document.getElementById('rating-label');
+            var labels = { 1: 'Poor', 2: 'Fair', 3: 'Good', 4: 'Very Good', 5: 'Excellent' };
+            if (!stars.length) return;
+
+            function setStars(val) {
+                stars.forEach(function (s) {
+                    var v = parseInt(s.getAttribute('data-val'), 10);
+                    s.classList.toggle('active', v <= val);
+                    s.style.color = '';
+                });
+                if (ratingInput) ratingInput.value = val;
+                if (ratingLabel) ratingLabel.textContent = labels[val] || '';
+            }
+
+            // Default to 5
+            setStars(5);
+
+            stars.forEach(function (star) {
+                star.addEventListener('click', function () {
+                    setStars(parseInt(this.getAttribute('data-val'), 10));
+                });
+                star.addEventListener('mouseenter', function () {
+                    var hoverVal = parseInt(this.getAttribute('data-val'), 10);
+                    stars.forEach(function (s) {
+                        var v = parseInt(s.getAttribute('data-val'), 10);
+                        s.style.color = v <= hoverVal ? '#f7b731' : '#ddd';
+                    });
+                    if (ratingLabel) ratingLabel.textContent = labels[hoverVal] || '';
+                });
+            });
+
+            var starContainer = document.getElementById('star-rating');
+            if (starContainer) {
+                starContainer.addEventListener('mouseleave', function () {
+                    var current = parseInt(ratingInput ? ratingInput.value : 5, 10);
+                    setStars(current);
+                });
+            }
+        })();
+    </script>
+    {% endblock %}

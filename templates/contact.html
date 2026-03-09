@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | Ankira Solution{% endblock %}
+{% block meta_description %}Get in touch with Ankira Solution. Inquire about VLSI courses, batch schedules, fees, or
+book a free demo class today.{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="page-header text-center">
+    <div class="container page-header-content">
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>›</span>
+            <span>Contact</span>
+        </div>
+        <h1 class="page-title">Get In Touch</h1>
+        <p class="page-subtitle">Have questions about our courses, fees, or batch schedules? Our team is ready to answer
+            all your questions.</p>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="py-section bg-white">
+    <div class="container">
+        <div class="contact-grid">
+
+            <!-- Left: Contact Info + Map -->
+            <div class="contact-info">
+                <span class="section-label">Contact Info</span>
+                <h2 style="margin-top: 0.75rem;">Reach Out, We're <span style="color: var(--primary-light);">Here to
+                        Help</span></h2>
+                <p>Whether you're a student, working professional, or parent — our counselling team is available to
+                    guide you about the right VLSI course for your career.</p>
+
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-text">
+                            <h5>Our Location</h5>
+                            <p>123 Semiconductor Hub, Tech Park,<br>Bangalore – 560001, Karnataka, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div class="contact-item-text">
+                            <h5>Call Us</h5>
+                            <p>+91 98765 43210<br>+91 12345 67890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-text">
+                            <h5>Email Us</h5>
+                            <p>info@ankirasolution.com<br>admissions@ankirasolution.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🕐</div>
+                        <div class="contact-item-text">
+                            <h5>Office Hours</h5>
+                            <p>Monday – Saturday: 9:00 AM – 7:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Embed -->
+                <div class="map-container mt-4">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497698.9973900048!2d77.35072965791016!3d12.953945537338774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+                        width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Ankira Solution Location">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Right: Inquiry Form -->
+            <div class="contact-form-wrapper">
+                <div class="form-card">
+                    <h3>Send Us a Message</h3>
+                    <p>Book a free demo or inquire about upcoming batches. We'll get back to you within 24 hours.</p>
+
+                    {% if success %}
+                    <div class="form-success">
+                        ✅ Thank you! Your inquiry has been submitted. We'll contact you within 24 hours.
+                    </div>
+                    {% endif %}
+
+                    {% if error %}
+                    <div class="form-error">
+                        ❌ Something went wrong. Please check the form and try again.
+                    </div>
+                    {% endif %}
+
+                    <form action="{% url 'contact' %}" method="POST" class="inquiry-form" id="inquiry-form" novalidate>
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="id_name">Full Name <span style="color: red;">*</span></label>
+                            <input type="text" id="id_name" name="name"
+                                class="form-control {% if form_errors.name %}is-invalid{% endif %}"
+                                value="{{ form_data.name|default:'' }}" placeholder="e.g. Ravi Kumar" required>
+                            {% if form_errors.name %}
+                            <small style="color: #e74c3c;">{{ form_errors.name }}</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_phone">Phone Number <span style="color: red;">*</span></label>
+                            <input type="tel" id="id_phone" name="phone"
+                                class="form-control {% if form_errors.phone %}is-invalid{% endif %}"
+                                value="{{ form_data.phone|default:'' }}" placeholder="+91 9XXXXXXXXX" required>
+                            {% if form_errors.phone %}
+                            <small style="color: #e74c3c;">{{ form_errors.phone }}</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_email">Email Address <span style="color: red;">*</span></label>
+                            <input type="email" id="id_email" name="email"
+                                class="form-control {% if form_errors.email %}is-invalid{% endif %}"
+                                value="{{ form_data.email|default:'' }}" placeholder="you@example.com" required>
+                            {% if form_errors.email %}
+                            <small style="color: #e74c3c;">{{ form_errors.email }}</small>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_course">Course Interested In</label>
+                            <select id="id_course" name="course" class="form-control">
+                                <option value="">-- Select a Course --</option>
+                                <option value="frontend">VLSI Frontend Design (RTL &amp; Verification)</option>
+                                <option value="backend">VLSI Backend Physical Design</option>
+                                <option value="sta">Static Timing Analysis (STA)</option>
+                                <option value="analog">Analog &amp; Mixed Signal (Optional)</option>
+                                <option value="demo">Book Free Demo Class</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_message">Message</label>
+                            <textarea id="id_message" name="message" class="form-control" rows="4"
+                                placeholder="Tell us about your background and what you're looking to learn...">{{ form_data.message|default:'' }}</textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+                            🚀 Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- QUICK INFO STRIP -->
+<section style="background: var(--bg-light); padding: 2.5rem 0; border-top: 1px solid var(--border);">
+    <div class="container">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+            <div>
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎓</div>
+                <h5 style="color: var(--primary);">Free Demo Class</h5>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Experience before enrolling</p>
+            </div>
+            <div>
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💰</div>
+                <h5 style="color: var(--primary);">Affordable Fees</h5>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">EMI options available</p>
+            </div>
+            <div>
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">👥</div>
+                <h5 style="color: var(--primary);">Small Batches</h5>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Max 15 students per batch</p>
+            </div>
+            <div>
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📅</div>
+                <h5 style="color: var(--primary);">Flexible Timings</h5>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Weekday &amp; weekend batches</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('inquiry-form').addEventListener('submit', function () {
+        var btn = document.getElementById('submit-btn');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+    });
+</script>
+{% endblock %}

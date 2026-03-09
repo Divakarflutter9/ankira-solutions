@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Courses | Ankira Solution – VLSI Training{% endblock %}
+{% block meta_description %}Explore VLSI Frontend Design, Backend Physical Design, and STA courses at Ankira Solution
+with detailed curriculum and hands-on training.{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HEADER -->
+<section class="page-header text-center">
+    <div class="container page-header-content">
+        <div class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>›</span>
+            <span>Courses</span>
+        </div>
+        <h1 class="page-title">Our Training Programs</h1>
+        <p class="page-subtitle">Structured, industry-aligned curriculums designed to bridge the gap between academic
+            learning and semiconductor industry expectations.</p>
+    </div>
+</section>
+
+<!-- COURSE MODULES -->
+<section class="py-section bg-white">
+    <div class="container">
+
+        <!-- Course Navigation Tabs -->
+        <div class="courses-nav">
+            <button class="course-tab active" onclick="filterCourse(this, 'frontend')">🔌 Frontend Design</button>
+            <button class="course-tab" onclick="filterCourse(this, 'backend')">🏗️ Backend Design</button>
+            <button class="course-tab" onclick="filterCourse(this, 'sta')">⏱️ Static Timing Analysis</button>
+            <button class="course-tab" onclick="filterCourse(this, 'analog')">🔬 Analog & Mixed Signal</button>
+        </div>
+
+        <!-- MODULE 1: VLSI Frontend Design -->
+        <div class="course-module course-group" id="course-frontend">
+            <div class="module-header">
+                <div class="module-header-icon">🔌</div>
+                <h2>VLSI Frontend Design <span class="badge">RTL & Verification</span></h2>
+            </div>
+            <div class="module-content">
+                <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
+                    This comprehensive program covers the complete frontend ASIC design flow from Digital Fundamentals
+                    through to verification using industry-standard methodologies and EDA tools.
+                </p>
+
+                <h4 style="color: var(--primary); margin-bottom: 1rem;">📘 Module 1: Digital Fundamentals</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Boolean Algebra & Logic Gates</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Combinational Circuits (Mux, Adder,
+                        Decoder)</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Sequential Circuits (FF, Register,
+                        Counter)</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Timing Concepts & Setup/Hold</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Number Systems & Encoding</div>
+                </div>
+
+                <h4 style="color: var(--primary); margin: 1.75rem 0 1rem;">📘 Module 2: HDL Programming</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Verilog Syntax & Data Types</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Blocking vs Non-Blocking Assignments
+                    </div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Always & Initial Blocks</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>SystemVerilog Extensions</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Testbench Writing & Simulation</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Assertions & Functional Coverage</div>
+                </div>
+
+                <h4 style="color: var(--primary); margin: 1.75rem 0 1rem;">📘 Module 3: FSM & Advanced Design</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Mealy & Moore State Machines</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>FSM Optimization Techniques</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>UVM Basics & Methodology</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Functional Verification Flow</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>FPGA Introduction & Prototyping</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>STA Fundamentals Introduction</div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Enroll in This Course</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary" style="margin-left: 1rem;">Book Free
+                        Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 2: VLSI Backend Physical Design -->
+        <div class="course-module course-group" id="course-backend" style="display:none;">
+            <div class="module-header">
+                <div class="module-header-icon">🏗️</div>
+                <h2>VLSI Backend Physical Design <span class="badge">RTL to GDSII</span></h2>
+            </div>
+            <div class="module-content">
+                <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
+                    The most comprehensive backend physical design course covering the complete RTL to GDSII flow with
+                    hands-on labs using industry-grade EDA tools from Cadence and Synopsys.
+                </p>
+
+                <h4 style="color: var(--primary); margin-bottom: 1rem;">📘 Module 1: ASIC Design Flow Overview</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>RTL to GDSII Flow Overview</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Synthesis & Technology Libraries</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Netlist & Constraints Understanding
+                    </div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Physical Design Inputs & Checks</div>
+                </div>
+
+                <h4 style="color: var(--primary); margin: 1.75rem 0 1rem;">📘 Module 2: Floorplanning & Placement</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Core/Die Area Estimation</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Power Planning & Ring</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Macro & I/O Placement Strategies</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Standard Cell Placement</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Congestion Analysis & Fixing</div>
+                </div>
+
+                <h4 style="color: var(--primary); margin: 1.75rem 0 1rem;">📘 Module 3: CTS, Routing & Signoff</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Clock Tree Synthesis (CTS)</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Clock Skew Balancing & Useful Skew
+                    </div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Global & Detail Routing</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Timing Closure Techniques</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>DRC & LVS Concepts & Fixing</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Cadence / Synopsys Tool Overview</div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Enroll in This Course</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary" style="margin-left: 1rem;">Book Free
+                        Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 3: STA Special Program -->
+        <div class="course-module course-group" id="course-sta" style="display:none;">
+            <div class="module-header">
+                <div class="module-header-icon">⏱️</div>
+                <h2>Static Timing Analysis <span class="badge">STA Special Program</span></h2>
+            </div>
+            <div class="module-content">
+                <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
+                    A dedicated, deep-dive STA program for engineers who want to master timing analysis, SDC
+                    constraints, and timing closure methodologies used in ASIC and FPGA flows.
+                </p>
+
+                <h4 style="color: var(--primary); margin-bottom: 1rem;">📘 Module 1: Timing Fundamentals</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Setup Time & Hold Time Analysis</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Timing Paths (Data, Clock)</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Slack Analysis & Interpretation</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Critical Path Identification</div>
+                </div>
+
+                <h4 style="color: var(--primary); margin: 1.75rem 0 1rem;">📘 Module 2: SDC Constraints</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>create_clock & Generated Clocks</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Input/Output Delays</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>False Paths & Multicycle Paths</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Clock Groups & Domain Crossings</div>
+                </div>
+
+                <h4 style="color: var(--primary); margin: 1.75rem 0 1rem;">📘 Module 3: Timing Closure</h4>
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Reading & Interpreting Timing Reports
+                    </div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Setup & Hold Violation Fixing</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Timing Optimization Strategies</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>PrimeTime / Tempus Tool Exposure</div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Enroll in This Course</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary" style="margin-left: 1rem;">Book Free
+                        Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 4: Analog & Mixed Signal -->
+        <div class="course-module course-group" id="course-analog" style="display:none;">
+            <div class="module-header">
+                <div class="module-header-icon">🔬</div>
+                <h2>Analog & Mixed Signal <span class="badge">Optional Program</span></h2>
+            </div>
+            <div class="module-content">
+                <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
+                    An introductory program for students interested in analog IC design and mixed-signal concepts,
+                    covering device physics through basic layout.
+                </p>
+
+                <div class="topics-grid">
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>MOSFET Fundamentals & Biasing</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Current Mirrors & References</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Single & Differential Amplifiers</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Op-Amp Design Basics</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Analog Layout Fundamentals</div>
+                    <div class="topic-chip"><span class="topic-chip-icon">✓</span>Mixed-Signal Design Concepts</div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Enroll in This Course</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-primary" style="margin-left: 1rem;">Book Free
+                        Demo</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section text-center">
+    <div class="container">
+        <h2>Ready to Start Your <span style="color: var(--accent);">VLSI Career?</span></h2>
+        <p>Join hundreds of engineers who have kickstarted their semiconductor careers with Ankira Solution. New batches
+            start every month.</p>
+        <div class="cta-buttons-group">
+            <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">🚀 Enroll in a Batch Today</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">📅 Book a Free Demo Session</a>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    function filterCourse(btn, id) {
+        // Deactivate all tabs
+        document.querySelectorAll('.course-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        // Hide all modules
+        document.querySelectorAll('.course-group').forEach(el => el.style.display = 'none');
+        // Show selected
+        document.getElementById('course-' + id).style.display = 'block';
+    }
+</script>
+{% endblock %}
