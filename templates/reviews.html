@@ -67,10 +67,10 @@ engineers who trained with us.{% endblock %}
 
         {% else %}
         <div class="reviews-page-empty">
-            <div style="font-size:4rem; margin-bottom:1rem; opacity:0.3;">⭐</div>
+            <div style="font-size:4rem; margin-bottom:1rem; opacity:0.3;"><i class="bi bi-star-fill text-warning"></i></div>
             <h3>No Reviews Yet</h3>
             <p>Be the first to share your experience after completing a course!</p>
-            <a href="{% url 'home' %}#review-form" class="btn btn-primary" style="margin-top:1.5rem;">✍️ Write a
+            <a href="{% url 'home' %}#review-form" class="btn btn-primary" style="margin-top:1.5rem;"><i class="bi bi-pencil-square"></i> Write a
                 Review</a>
         </div>
         {% endif %}
@@ -81,7 +81,7 @@ engineers who trained with us.{% endblock %}
                 <h3>Completed a Course with Us?</h3>
                 <p>Share your honest experience and help future VLSI engineers make the right choice.</p>
             </div>
-            <a href="{% url 'home' %}#review-form" class="btn btn-primary btn-lg">⭐ Write a Review</a>
+            <a href="{% url 'home' %}#review-form" class="btn btn-primary btn-lg"><i class="bi bi-pencil-square"></i> Write a Review</a>
         </div>
 
     </div>

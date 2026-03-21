@@ -8,10 +8,11 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
 {% block content %}
 
 <!-- ====== HERO SECTION ====== -->
-<section class="hero-section">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-grid-bg"></div>
-    <div class="hero-circuit"></div>
+<section class="hero-section" style="background: url({% static 'images/tech_bg.png' %}) center/cover no-repeat; position: relative;">
+    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(10, 36, 99, 0.85); z-index: 0;"></div>
+    <div class="hero-bg-pattern" style="z-index: 1;"></div>
+    <div class="hero-grid-bg" style="z-index: 1;"></div>
+    <div class="hero-circuit" style="z-index: 1;"></div>
 
     <div class="container">
         <div class="hero-content-wrapper">
@@ -34,16 +35,16 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
                 </p>
                 <div class="hero-cta-group">
                     <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">
-                        ✨ Enroll Now
+                        <i class="bi bi-stars"></i> Enroll Now
                     </a>
                     <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">
-                        📅 Book Free Demo
+                        <i class="bi bi-calendar-check"></i> Book Free Demo
                     </a>
                     <a href="#" class="btn btn-outline btn-lg">
-                        📄 Download Brochure
+                        <i class="bi bi-file-earmark-arrow-down"></i> Download Brochure
                     </a>
                 </div>
-                <div class="hero-stats">
+                <div class="hero-stats" style="flex-wrap: wrap; gap: 1.5rem;">
                     <div class="hero-stat">
                         <div class="number">500+</div>
                         <div class="label">Students Trained</div>
@@ -60,7 +61,16 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
             </div>
 
             <!-- Hero Visual Card -->
-            <div class="hero-visual">
+            <div class="hero-visual" style="z-index: 2;">
+                <div class="hero-image-wrap">
+                    {% if site_images.hero_image %}
+                        <img src="{{ site_images.hero_image.url }}" alt="VLSI Chip Design"
+                            class="hero-img" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                    {% else %}
+                        <img src="{% static 'images/VLSI_chip_design.webp' %}" alt="VLSI Chip Design"
+                            class="hero-img" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 15px 35px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);">
+                    {% endif %}
+                </div>
                 <div class="hero-card">
                     <div class="hero-card-header">
                         <div class="hero-card-dots">
@@ -72,34 +82,34 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
                     </div>
                     <div class="hero-flow-steps">
                         <div class="flow-step">
-                            <div class="flow-step-icon" style="background:rgba(58,134,255,0.25);">📐</div>
+                            <div class="flow-step-icon" style="background:rgba(58,134,255,0.25);"><i class="bi bi-rulers"></i></div>
                             <span class="flow-step-label">RTL Design & Verilog</span>
-                            <span class="flow-step-arrow">✓</span>
+                            <span class="flow-step-arrow"><i class="bi bi-check2"></i></span>
                         </div>
                         <div class="flow-step">
-                            <div class="flow-step-icon" style="background:rgba(247,183,49,0.25);">🔬</div>
+                            <div class="flow-step-icon" style="background:rgba(247,183,49,0.25);"><i class="bi bi-microscope"></i></div>
                             <span class="flow-step-label">Synthesis & Simulation</span>
-                            <span class="flow-step-arrow">✓</span>
+                            <span class="flow-step-arrow"><i class="bi bi-check2"></i></span>
                         </div>
                         <div class="flow-step">
-                            <div class="flow-step-icon" style="background:rgba(46,204,113,0.25);">⏱️</div>
+                            <div class="flow-step-icon" style="background:rgba(46,204,113,0.25);"><i class="bi bi-stopwatch"></i></div>
                             <span class="flow-step-label">Static Timing Analysis</span>
-                            <span class="flow-step-arrow">✓</span>
+                            <span class="flow-step-arrow"><i class="bi bi-check2"></i></span>
                         </div>
                         <div class="flow-step">
-                            <div class="flow-step-icon" style="background:rgba(231,76,60,0.25);">🗺️</div>
+                            <div class="flow-step-icon" style="background:rgba(231,76,60,0.25);"><i class="bi bi-map"></i></div>
                             <span class="flow-step-label">Floorplan & Placement</span>
-                            <span class="flow-step-arrow">✓</span>
+                            <span class="flow-step-arrow"><i class="bi bi-check2"></i></span>
                         </div>
                         <div class="flow-step">
-                            <div class="flow-step-icon" style="background:rgba(155,89,182,0.25);">🌲</div>
+                            <div class="flow-step-icon" style="background:rgba(155,89,182,0.25);"><i class="bi bi-diagram-3"></i></div>
                             <span class="flow-step-label">Clock Tree Synthesis</span>
-                            <span class="flow-step-arrow">✓</span>
+                            <span class="flow-step-arrow"><i class="bi bi-check2"></i></span>
                         </div>
                         <div class="flow-step">
-                            <div class="flow-step-icon" style="background:rgba(26,188,156,0.25);">🔌</div>
+                            <div class="flow-step-icon" style="background:rgba(26,188,156,0.25);"><i class="bi bi-plug"></i></div>
                             <span class="flow-step-label">Routing & GDSII Signoff</span>
-                            <span class="flow-step-arrow">✓</span>
+                            <span class="flow-step-arrow"><i class="bi bi-check2"></i></span>
                         </div>
                     </div>
                 </div>
@@ -113,8 +123,13 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
     <div class="container">
         <div class="about-grid">
             <!-- Image / Visual Area -->
-            <div class="about-image-area">
-                <div class="about-img-card">
+            <div class="about-image-area" style="position: relative;">
+                {% if site_images.about_image %}
+                    <img src="{{ site_images.about_image.url }}" alt="Students in Ankira VLSI Lab" style="width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                {% else %}
+                    <img src="{% static 'images/students_lab.png' %}" alt="Students in Ankira VLSI Lab" style="width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">
+                {% endif %}
+                <div class="about-img-card" style="margin-top: -3rem; position: relative; z-index: 2; width: 90%; margin-left: auto; margin-right: auto;">
                     <div>
                         <div class="about-card-title">Ankira Solution</div>
                         <div class="about-card-subtitle">VLSI Training Institute — Bangalore</div>
@@ -139,7 +154,7 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
                     </div>
                 </div>
                 <div class="floating-badge">
-                    <span class="badge-icon">🏆</span>
+                    <span class="badge-icon"><i class="bi bi-trophy"></i></span>
                     <span class="badge-text">Industry-Recognized<br>Training</span>
                 </div>
             </div>
@@ -169,31 +184,30 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
                 </p>
                 <div class="about-checks">
                     <div class="about-check-item">
-                        <div class="check-icon">✓</div>
+                        <div class="check-icon"><i class="bi bi-check2"></i></div>
                         <div class="check-text">
                             <h5>Hands-On Project Training</h5>
                             <p>Real-time project experience with industry-standard design flows</p>
                         </div>
                     </div>
                     <div class="about-check-item">
-                        <div class="check-icon">✓</div>
+                        <div class="check-icon"><i class="bi bi-check2"></i></div>
                         <div class="check-text">
                             <h5>Expert Faculty</h5>
                             <p>Trainers from the VLSI domain with real-world design experience</p>
                         </div>
                     </div>
                     <div class="about-check-item">
-                        <div class="check-icon">✓</div>
+                        <div class="check-icon"><i class="bi bi-check2"></i></div>
                         <div class="check-text">
                             <h5>Placement Guidance</h5>
                             <p>Internship opportunities and career support for every student</p>
                         </div>
                     </div>
                 </div>
-                <div class="mt-4">
+                <div class="mt-4" style="display:flex; flex-wrap:wrap; gap:0.75rem;">
                     <a href="{% url 'courses' %}" class="btn btn-primary">Explore Courses</a>
-                    <a href="{% url 'faculty' %}" class="btn btn-outline-primary mt-2" style="margin-left: 1rem;">Our
-                        Faculty</a>
+                    <a href="{% url 'faculty' %}" class="btn btn-outline-primary">Our Faculty</a>
                 </div>
             </div>
         </div>
@@ -214,18 +228,23 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
         <div class="course-cards-grid">
             <!-- Digital VLSI Design -->
             <div class="course-card">
+                {% if course_images.digital_vlsi %}
+                <div class="course-card-img">
+                    <img src="{{ course_images.digital_vlsi.url }}" alt="Digital VLSI Design" style="width:100%; height:160px; object-fit:cover; border-radius:12px 12px 0 0;">
+                </div>
+                {% endif %}
                 <div class="course-card-top">
-                    <span class="course-icon-top">🔌</span>
+                    <span class="course-icon-top"><i class="bi bi-plug"></i></span>
                     <div class="course-card-title">Digital VLSI Design</div>
                     <div class="course-card-subtitle">Verilog / VHDL &amp; FPGA</div>
                 </div>
                 <div class="course-card-body">
                     <ul class="course-topics">
-                        <li><span class="topic-arrow">▶</span> Digital Logic Design Fundamentals</li>
-                        <li><span class="topic-arrow">▶</span> Verilog / VHDL Programming</li>
-                        <li><span class="topic-arrow">▶</span> Simulation &amp; Verification</li>
-                        <li><span class="topic-arrow">▶</span> FPGA Implementation</li>
-                        <li><span class="topic-arrow">▶</span> ASIC Design Flow Introduction</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Digital Logic Design Fundamentals</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Verilog / VHDL Programming</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Simulation &amp; Verification</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> FPGA Implementation</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> ASIC Design Flow Introduction</li>
                     </ul>
                     <a href="{% url 'courses' %}" class="btn btn-outline-primary">View Full Curriculum</a>
                 </div>
@@ -234,18 +253,23 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
             <!-- Physical Design (Featured) -->
             <div class="course-card featured">
                 <div class="popular-ribbon">Most Popular</div>
+                {% if course_images.physical_design %}
+                <div class="course-card-img">
+                    <img src="{{ course_images.physical_design.url }}" alt="Physical Design" style="width:100%; height:160px; object-fit:cover; border-radius:12px 12px 0 0;">
+                </div>
+                {% endif %}
                 <div class="course-card-top">
-                    <span class="course-icon-top">🏗️</span>
+                    <span class="course-icon-top"><i class="bi bi-building"></i></span>
                     <div class="course-card-title">Physical Design</div>
                     <div class="course-card-subtitle">Complete ASIC Physical Design Flow</div>
                 </div>
                 <div class="course-card-body">
                     <ul class="course-topics">
-                        <li><span class="topic-arrow">▶</span> Floorplanning</li>
-                        <li><span class="topic-arrow">▶</span> Placement</li>
-                        <li><span class="topic-arrow">▶</span> Clock Tree Synthesis (CTS)</li>
-                        <li><span class="topic-arrow">▶</span> Routing</li>
-                        <li><span class="topic-arrow">▶</span> Static Timing Analysis (STA)</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Floorplanning</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Placement</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Clock Tree Synthesis (CTS)</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Routing</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Static Timing Analysis (STA)</li>
                     </ul>
                     <a href="{% url 'courses' %}" class="btn btn-primary">View Full Curriculum</a>
                 </div>
@@ -253,18 +277,23 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
 
             <!-- FPGA Design -->
             <div class="course-card">
+                {% if course_images.fpga_design %}
+                <div class="course-card-img">
+                    <img src="{{ course_images.fpga_design.url }}" alt="FPGA Design" style="width:100%; height:160px; object-fit:cover; border-radius:12px 12px 0 0;">
+                </div>
+                {% endif %}
                 <div class="course-card-top">
-                    <span class="course-icon-top">📡</span>
+                    <span class="course-icon-top"><i class="bi bi-broadcast"></i></span>
                     <div class="course-card-title">FPGA Design</div>
                     <div class="course-card-subtitle">Hardware Implementation</div>
                 </div>
                 <div class="course-card-body">
                     <ul class="course-topics">
-                        <li><span class="topic-arrow">▶</span> FPGA Architecture &amp; Fundamentals</li>
-                        <li><span class="topic-arrow">▶</span> Hardware Description with Verilog</li>
-                        <li><span class="topic-arrow">▶</span> Synthesis &amp; Implementation</li>
-                        <li><span class="topic-arrow">▶</span> Timing Constraints &amp; Analysis</li>
-                        <li><span class="topic-arrow">▶</span> Real Hardware Project</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> FPGA Architecture &amp; Fundamentals</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Hardware Description with Verilog</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Synthesis &amp; Implementation</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Timing Constraints &amp; Analysis</li>
+                        <li><span class="topic-arrow"><i class="bi bi-caret-right-fill"></i></span> Real Hardware Project</li>
                     </ul>
                     <a href="{% url 'courses' %}" class="btn btn-outline-primary">View Full Curriculum</a>
                 </div>
@@ -275,13 +304,13 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
         <div
             style="margin-top:2rem; background:linear-gradient(135deg,#0a2463,#1e4db7); border-radius:16px; padding:2rem 2.5rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;">
             <div>
-                <div style="font-size:1.5rem; margin-bottom:0.5rem;">🎓</div>
+                <div style="font-size:1.5rem; margin-bottom:0.5rem;"><i class="bi bi-mortarboard" style="color:#fff;"></i></div>
                 <h3 style="color:white; font-size:1.2rem; font-weight:800; margin-bottom:0.35rem;">VLSI Internship
                     Program</h3>
                 <p style="color:rgba(255,255,255,0.75); font-size:0.9rem; margin:0;">Practical industry-level projects
                     and real design flow exposure to bridge classroom learning with professional work.</p>
             </div>
-            <a href="{% url 'contact' %}" class="btn btn-accent">Apply for Internship →</a>
+            <a href="{% url 'contact' %}" class="btn btn-accent">Apply for Internship &rarr;</a>
         </div>
     </div>
 
@@ -302,34 +331,34 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
 
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon-wrap">📚</div>
+                    <div class="feature-icon-wrap"><i class="bi bi-book"></i></div>
                     <h4>Industry-Relevant Curriculum</h4>
                     <p>Courses designed to directly match what semiconductor companies look for in VLSI engineers.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon-wrap">👨‍🏫</div>
+                    <div class="feature-icon-wrap"><i class="bi bi-person-video3"></i></div>
                     <h4>Experienced VLSI Trainers</h4>
                     <p>Learn from domain experts with real industry experience in VLSI design and chip development.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon-wrap">💻</div>
+                    <div class="feature-icon-wrap"><i class="bi bi-laptop"></i></div>
                     <h4>Hands-On Project Learning</h4>
                     <p>Every module includes practical exercises and real-world design projects for true industry
                         readiness.
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon-wrap">🎓</div>
+                    <div class="feature-icon-wrap"><i class="bi bi-mortarboard"></i></div>
                     <h4>Internship Opportunities</h4>
                     <p>Get hands-on exposure through our structured VLSI internship program with real design tasks.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon-wrap">💼</div>
+                    <div class="feature-icon-wrap"><i class="bi bi-briefcase"></i></div>
                     <h4>Placement Guidance</h4>
                     <p>Dedicated placement support including resume building, interview preparation, and referrals.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon-wrap">👥</div>
+                    <div class="feature-icon-wrap"><i class="bi bi-people"></i></div>
                     <h4>Small Batch Personalized Training</h4>
                     <p>Limited batch sizes ensure individual attention and personalized mentorship for every student.
                     </p>
@@ -347,7 +376,7 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
             </div>
             <div class="vm-grid">
                 <div class="vm-card vision">
-                    <div class="vm-icon">🔭</div>
+                    <div class="vm-icon"><i class="bi bi-telescope"></i></div>
                     <h3>Our Vision</h3>
                     <p>To become a leading centre of excellence in VLSI education and semiconductor training, empowering
                         students with advanced technical knowledge, innovation, and practical expertise to contribute to
@@ -359,7 +388,7 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
                         enabling them to build successful careers in VLSI design and chip development.</p>
                 </div>
                 <div class="vm-card mission">
-                    <div class="vm-icon">🎯</div>
+                    <div class="vm-icon"><i class="bi bi-bullseye"></i></div>
                     <h3>Our Mission</h3>
                     <p>To empower aspiring engineers with strong knowledge and practical skills in VLSI and
                         semiconductor
@@ -421,10 +450,10 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
             </div>
             {% else %}
             <div class="testimonials-empty">
-                <div class="testimonials-empty-icon">⭐</div>
+                <div class="testimonials-empty-icon"><i class="bi bi-star-fill text-warning"></i></div>
                 <h4>No reviews yet</h4>
                 <p>Be the first to share your experience after completing a course!</p>
-                <a href="#review-form" class="btn btn-accent" style="margin-top:1rem;">✍️ Write a Review</a>
+                <a href="#review-form" class="btn btn-accent" style="margin-top:1rem;"><i class="bi bi-pencil-square"></i> Write a Review</a>
             </div>
             {% endif %}
         </div>
@@ -437,7 +466,7 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
 
                 <!-- Left: Prompt Panel -->
                 <div class="review-prompt-panel">
-                    <div class="review-prompt-icon">✍️</div>
+                    <div class="review-prompt-icon"><i class="bi bi-pencil-square"></i></div>
                     <h2>Share Your <span>Experience</span></h2>
                     <p>Your honest review helps future students choose the right course and motivates our faculty to
                         keep
@@ -457,7 +486,7 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
                         </li>
                     </ul>
                     <div class="review-prompt-badge">
-                        <span style="font-size:1.5rem;">🏆</span>
+                        <span style="font-size:1.5rem;"><i class="bi bi-trophy text-warning"></i></span>
                         <div>
                             <div style="font-weight:700; font-size:0.9rem;">Top-Rated VLSI Institute</div>
                             <div style="font-size:0.8rem; opacity:0.7;">as rated by our students</div>
@@ -474,14 +503,14 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
 
                     {% if review_success %}
                     <div class="review-alert review-alert-success">
-                        ✅ Thank you! Your review has been submitted and is pending approval. It will appear on the
+                        <i class="bi bi-check-circle-fill"></i> Thank you! Your review has been submitted and is pending approval. It will appear on the
                         website
                         once approved.
                     </div>
                     {% endif %}
                     {% if review_error %}
                     <div class="review-alert review-alert-error">
-                        ⚠️ {{ review_error }}
+                        <i class="bi bi-exclamation-triangle-fill"></i> {{ review_error }}
                     </div>
                     {% endif %}
 
@@ -535,7 +564,7 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
-                            ⭐ Submit My Review
+                            <i class="bi bi-star-fill"></i> Submit My Review
                         </button>
                     </form>
                 </div>
@@ -544,13 +573,14 @@ hands-on tools, real-time projects, and expert mentorship.{% endblock %}
     </section>
 
     <!-- ====== CTA SECTION ====== -->
-    <section class="cta-section text-center">
-        <div class="container">
+    <section class="cta-section text-center" style="background: url('{% if site_images.hero_bg %}{{ site_images.hero_bg.url }}{% else %}{% static 'images/tech_bg.png' %}{% endif %}') center/cover no-repeat; position: relative;">
+        <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(10, 36, 99, 0.88); z-index: 0;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
             <h2>"Design the Chips that Power the Future."</h2>
             <p>Master RTL to GDSII with Confidence. Join Ankira Solution — From Classroom to Silicon.</p>
             <div class="cta-buttons-group">
-                <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">🚀 Start Your Journey Today</a>
-                <a href="{% url 'courses' %}" class="btn btn-outline btn-lg">📖 Explore Courses First</a>
+                <a href="{% url 'contact' %}" class="btn btn-accent btn-lg"><i class="bi bi-rocket-takeoff"></i> Start Your Journey Today</a>
+                <a href="{% url 'courses' %}" class="btn btn-outline btn-lg"><i class="bi bi-book-half"></i> Explore Courses First</a>
             </div>
         </div>
     </section>

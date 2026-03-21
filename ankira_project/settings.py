@@ -16,17 +16,27 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# ─────────────────────────────────────────────────────────
+# Load environment variables from .env file
+# ─────────────────────────────────────────────────────────
+try:
+    from dotenv import load_dotenv
+    load_dotenv(os.path.join(BASE_DIR, '.env'))
+except ImportError:
+    pass  # python-dotenv not installed; rely on OS environment
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-!9h1@l$j9=k&q)0$vd3(&kw03#8o0%d-v%en=5r_@b6)i=3^wn"
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-!9h1@l$j9=k&q)0$vd3(&kw03#8o0%d-v%en=5r_@b6)i=3^wn'
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['as.fastcopies.in', '173.249.38.225', 'localhost', '127.0.0.1']
+_allowed = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+ALLOWED_HOSTS = [h.strip() for h in _allowed.split(',') if h.strip()]
 
 
 # Application definition
@@ -43,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -63,6 +74,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "website.context_processors.site_images",
             ],
         },
     },
@@ -116,8 +128,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Media files (User uploaded images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'bkiranbabuu2023@gmail.com')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+DEFAULT_FROM_EMAIL = f'Ankira Solutions <{EMAIL_HOST_USER}>'
+

@@ -27,18 +27,23 @@ with detailed curriculum and hands-on training.{% endblock %}
 
         <!-- Course Navigation Tabs -->
         <div class="courses-nav">
-            <button class="course-tab active" onclick="filterCourse(this, 'frontend')">🔌 Frontend Design</button>
-            <button class="course-tab" onclick="filterCourse(this, 'backend')">🏗️ Backend Design</button>
-            <button class="course-tab" onclick="filterCourse(this, 'sta')">⏱️ Static Timing Analysis</button>
-            <button class="course-tab" onclick="filterCourse(this, 'analog')">🔬 Analog & Mixed Signal</button>
+            <button class="course-tab active" onclick="filterCourse(this, 'frontend')"><i class="bi bi-plug"></i> Frontend Design</button>
+            <button class="course-tab" onclick="filterCourse(this, 'backend')"><i class="bi bi-building"></i> Backend Design</button>
+            <button class="course-tab" onclick="filterCourse(this, 'sta')"><i class="bi bi-stopwatch"></i> Static Timing Analysis</button>
+            <button class="course-tab" onclick="filterCourse(this, 'analog')"><i class="bi bi-microscope"></i> Analog & Mixed Signal</button>
         </div>
 
         <!-- MODULE 1: VLSI Frontend Design -->
         <div class="course-module course-group" id="course-frontend">
             <div class="module-header">
-                <div class="module-header-icon">🔌</div>
+                <div class="module-header-icon"><i class="bi bi-plug"></i></div>
                 <h2>VLSI Frontend Design <span class="badge">RTL & Verification</span></h2>
             </div>
+            {% if course_images.frontend_design %}
+            <div style="margin-bottom:1.5rem; border-radius:12px; overflow:hidden;">
+                <img src="{{ course_images.frontend_design.url }}" alt="VLSI Frontend Design" style="width:100%; height:220px; object-fit:cover;">
+            </div>
+            {% endif %}
             <div class="module-content">
                 <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
                     This comprehensive program covers the complete frontend ASIC design flow from Digital Fundamentals
@@ -88,9 +93,14 @@ with detailed curriculum and hands-on training.{% endblock %}
         <!-- MODULE 2: VLSI Backend Physical Design -->
         <div class="course-module course-group" id="course-backend" style="display:none;">
             <div class="module-header">
-                <div class="module-header-icon">🏗️</div>
+                <div class="module-header-icon"><i class="bi bi-building"></i></div>
                 <h2>VLSI Backend Physical Design <span class="badge">RTL to GDSII</span></h2>
             </div>
+            {% if course_images.backend_design %}
+            <div style="margin-bottom:1.5rem; border-radius:12px; overflow:hidden;">
+                <img src="{{ course_images.backend_design.url }}" alt="VLSI Backend Design" style="width:100%; height:220px; object-fit:cover;">
+            </div>
+            {% endif %}
             <div class="module-content">
                 <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
                     The most comprehensive backend physical design course covering the complete RTL to GDSII flow with
@@ -137,9 +147,14 @@ with detailed curriculum and hands-on training.{% endblock %}
         <!-- MODULE 3: STA Special Program -->
         <div class="course-module course-group" id="course-sta" style="display:none;">
             <div class="module-header">
-                <div class="module-header-icon">⏱️</div>
+                <div class="module-header-icon"><i class="bi bi-stopwatch"></i></div>
                 <h2>Static Timing Analysis <span class="badge">STA Special Program</span></h2>
             </div>
+            {% if course_images.sta %}
+            <div style="margin-bottom:1.5rem; border-radius:12px; overflow:hidden;">
+                <img src="{{ course_images.sta.url }}" alt="Static Timing Analysis" style="width:100%; height:220px; object-fit:cover;">
+            </div>
+            {% endif %}
             <div class="module-content">
                 <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
                     A dedicated, deep-dive STA program for engineers who want to master timing analysis, SDC
@@ -182,9 +197,14 @@ with detailed curriculum and hands-on training.{% endblock %}
         <!-- MODULE 4: Analog & Mixed Signal -->
         <div class="course-module course-group" id="course-analog" style="display:none;">
             <div class="module-header">
-                <div class="module-header-icon">🔬</div>
+                <div class="module-header-icon"><i class="bi bi-microscope"></i></div>
                 <h2>Analog & Mixed Signal <span class="badge">Optional Program</span></h2>
             </div>
+            {% if course_images.analog_mixed %}
+            <div style="margin-bottom:1.5rem; border-radius:12px; overflow:hidden;">
+                <img src="{{ course_images.analog_mixed.url }}" alt="Analog & Mixed Signal" style="width:100%; height:220px; object-fit:cover;">
+            </div>
+            {% endif %}
             <div class="module-content">
                 <p style="color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.8;">
                     An introductory program for students interested in analog IC design and mixed-signal concepts,
@@ -212,14 +232,15 @@ with detailed curriculum and hands-on training.{% endblock %}
 </section>
 
 <!-- CTA BANNER -->
-<section class="cta-section text-center">
-    <div class="container">
-        <h2>Ready to Start Your <span style="color: var(--accent);">VLSI Career?</span></h2>
+<section class="cta-section text-center" style="background: url({% static 'images/tech_bg.png' %}) center/cover no-repeat; position: relative;">
+    <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(10, 36, 99, 0.88); z-index: 0;"></div>
+    <div class="container" style="position: relative; z-index: 1;">
+        <h2 style="color: white;">Ready to Start Your <span style="color: var(--accent);">VLSI Career?</span></h2>
         <p>Join hundreds of engineers who have kickstarted their semiconductor careers with Ankira Solution. New batches
             start every month.</p>
         <div class="cta-buttons-group">
-            <a href="{% url 'contact' %}" class="btn btn-accent btn-lg">🚀 Enroll in a Batch Today</a>
-            <a href="{% url 'contact' %}" class="btn btn-outline btn-lg">📅 Book a Free Demo Session</a>
+            <a href="{% url 'contact' %}" class="btn btn-accent btn-lg"><i class="bi bi-rocket-takeoff"></i> Enroll in a Batch Today</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline btn-lg"><i class="bi bi-calendar-check"></i> Book a Free Demo Session</a>
         </div>
     </div>
 </section>

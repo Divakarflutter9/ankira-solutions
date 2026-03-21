@@ -7,7 +7,26 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.http import JsonResponse
 from django.db.models import Count, Q
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+import threading
 from .models import Inquiry, Review
+
+def send_email_async(subject, plain_message, html_message):
+    def send():
+        try:
+            send_mail(
+                subject=subject,
+                message=plain_message,
+                from_email='Ankira Solutions <bkiranbabuu2023@gmail.com>',
+                recipient_list=['ankirasolutions@gmail.com'],
+                html_message=html_message,
+                fail_silently=True,
+            )
+        except Exception as e:
+            print(f"Failed to send email: {e}")
+    threading.Thread(target=send).start()
 
 
 # ─────────────────────────────────────────────
@@ -47,6 +66,15 @@ class HomeView(View):
                     is_approved=False,
                 )
                 review_success = True
+                
+                # Send email notification asynchronously
+                html_message = render_to_string('emails/new_review.html', {
+                    'name': name, 'email': email, 'course': course,
+                    'rating': rating, 'text': text
+                })
+                plain_message = strip_tags(html_message)
+                send_email_async('New Review Pending Approval - Ankira Solutions', plain_message, html_message)
+                
             except Exception:
                 review_error = 'Something went wrong. Please try again.'
 
@@ -130,6 +158,15 @@ class ContactView(View):
                 name=name, phone=phone, email=email,
                 course=course, message=message,
             )
+            
+            # Send email notification asynchronously
+            html_message = render_to_string('emails/new_inquiry.html', {
+                'name': name, 'phone': phone, 'email': email,
+                'course': course, 'message': message
+            })
+            plain_message = strip_tags(html_message)
+            send_email_async('New Inquiry Received - Ankira Solutions', plain_message, html_message)
+            
             return render(request, self.template_name, {'success': True})
         except Exception:
             return render(request, self.template_name, {

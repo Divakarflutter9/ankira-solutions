@@ -36,28 +36,28 @@ book a free demo class today.{% endblock %}
 
                 <div class="contact-items">
                     <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-icon"><i class="bi bi-geo-alt"></i></div>
                         <div class="contact-item-text">
                             <h5>Our Location</h5>
                             <p>123 Semiconductor Hub, Tech Park,<br>Bangalore – 560001, Karnataka, India</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-item-icon">📞</div>
+                        <div class="contact-item-icon"><i class="bi bi-telephone"></i></div>
                         <div class="contact-item-text">
                             <h5>Call Us</h5>
                             <p>+91 98765 43210<br>+91 12345 67890</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-icon"><i class="bi bi-envelope"></i></div>
                         <div class="contact-item-text">
                             <h5>Email Us</h5>
                             <p>info@ankirasolution.com<br>admissions@ankirasolution.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-item-icon">🕐</div>
+                        <div class="contact-item-icon"><i class="bi bi-clock"></i></div>
                         <div class="contact-item-text">
                             <h5>Office Hours</h5>
                             <p>Monday – Saturday: 9:00 AM – 7:00 PM<br>Sunday: Closed</p>
@@ -83,13 +83,13 @@ book a free demo class today.{% endblock %}
 
                     {% if success %}
                     <div class="form-success">
-                        ✅ Thank you! Your inquiry has been submitted. We'll contact you within 24 hours.
+                        <i class="bi bi-check-circle-fill"></i> Thank you! Your inquiry has been submitted. We'll contact you within 24 hours.
                     </div>
                     {% endif %}
 
                     {% if error %}
                     <div class="form-error">
-                        ❌ Something went wrong. Please check the form and try again.
+                        <i class="bi bi-x-circle-fill"></i> Something went wrong. Please check the form and try again.
                     </div>
                     {% endif %}
 
@@ -145,8 +145,8 @@ book a free demo class today.{% endblock %}
                                 placeholder="Tell us about your background and what you're looking to learn...">{{ form_data.message|default:'' }}</textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
-                            🚀 Submit Inquiry
+                        <button type="submit" class="btn btn-primary btn-block" id="submit-btn" style="display:flex; align-items:center; justify-content:center; gap:0.5rem;">
+                            <i class="bi bi-send-fill" style="margin:0;"></i> Submit Inquiry
                         </button>
                     </form>
                 </div>
@@ -161,22 +161,22 @@ book a free demo class today.{% endblock %}
         <div
             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
             <div>
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎓</div>
+                <div style="font-size: 2.25rem; margin-bottom: 0.5rem;"><i class="bi bi-laptop text-primary"></i></div>
                 <h5 style="color: var(--primary);">Free Demo Class</h5>
                 <p style="font-size: 0.9rem; color: var(--text-muted);">Experience before enrolling</p>
             </div>
             <div>
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💰</div>
+                <div style="font-size: 2.25rem; margin-bottom: 0.5rem;"><i class="bi bi-cash-coin text-primary"></i></div>
                 <h5 style="color: var(--primary);">Affordable Fees</h5>
                 <p style="font-size: 0.9rem; color: var(--text-muted);">EMI options available</p>
             </div>
             <div>
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">👥</div>
+                <div style="font-size: 2.25rem; margin-bottom: 0.5rem;"><i class="bi bi-people text-primary"></i></div>
                 <h5 style="color: var(--primary);">Small Batches</h5>
                 <p style="font-size: 0.9rem; color: var(--text-muted);">Max 15 students per batch</p>
             </div>
             <div>
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📅</div>
+                <div style="font-size: 2.25rem; margin-bottom: 0.5rem;"><i class="bi bi-calendar-check text-primary"></i></div>
                 <h5 style="color: var(--primary);">Flexible Timings</h5>
                 <p style="font-size: 0.9rem; color: var(--text-muted);">Weekday &amp; weekend batches</p>
             </div>

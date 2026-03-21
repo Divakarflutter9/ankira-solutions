@@ -57,3 +57,47 @@ class Review(models.Model):
 
     def stars_display(self):
         return '★' * self.rating + '☆' * (5 - self.rating)
+
+
+class SiteImage(models.Model):
+    IMAGE_KEYS = [
+        ('logo', 'Main Logo (Navbar & Footer)'),
+        ('hero_image', 'Hero Section Graphic (Homepage)'),
+        ('hero_bg', 'Hero Section Background (Homepage)'),
+        ('about_image', 'About Us Image (Homepage)'),
+        ('cta_bg', 'Call To Action Background (Homepage)'),
+    ]
+    
+    key = models.CharField(max_length=50, choices=IMAGE_KEYS, unique=True, help_text="Select where this image should appear.")
+    image = models.ImageField(upload_to='site_images/')
+    description = models.CharField(max_length=200, blank=True, help_text="Optional description for your own reference.")
+
+    class Meta:
+        verbose_name = 'Site Image'
+        verbose_name_plural = 'Site Images'
+
+    def __str__(self):
+        return self.key
+
+
+class CourseImage(models.Model):
+    COURSE_KEYS = [
+        ('digital_vlsi', 'Digital VLSI Design (Homepage Card)'),
+        ('physical_design', 'Physical Design (Homepage Card)'),
+        ('fpga_design', 'FPGA Design (Homepage Card)'),
+        ('frontend_design', 'VLSI Frontend Design (Courses Page)'),
+        ('backend_design', 'VLSI Backend Physical Design (Courses Page)'),
+        ('sta', 'Static Timing Analysis (Courses Page)'),
+        ('analog_mixed', 'Analog & Mixed Signal (Courses Page)'),
+    ]
+
+    key = models.CharField(max_length=50, choices=COURSE_KEYS, unique=True, help_text="Select which course this image belongs to.")
+    image = models.ImageField(upload_to='course_images/')
+    description = models.CharField(max_length=200, blank=True, help_text="Optional label for your reference.")
+
+    class Meta:
+        verbose_name = 'Course Image'
+        verbose_name_plural = 'Course Images'
+
+    def __str__(self):
+        return self.get_key_display()
