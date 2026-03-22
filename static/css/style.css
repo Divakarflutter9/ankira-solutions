@@ -368,6 +368,12 @@ img {
 }
 
 /* Mobile Sidebar Drawer (Top-Down) */
+@media screen and (min-width: 992px) {
+    .mobile-sidebar, .mobile-overlay {
+        display: none !important;
+    }
+}
+
 .mobile-sidebar {
     position: fixed;
     top: 0;
