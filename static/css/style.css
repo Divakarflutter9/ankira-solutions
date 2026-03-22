@@ -325,12 +325,16 @@ img {
 .menu-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    justify-content: center;
+    gap: 6px;
     cursor: pointer;
-    padding: 8px;
-    border-radius: var(--radius-sm);
-    background: none;
-    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(10, 36, 99, 0.05);
+    border: 1px solid rgba(10, 36, 99, 0.1);
+    width: 44px;
+    height: 44px;
+    transition: var(--transition);
 }
 
 .menu-toggle span {
@@ -339,56 +343,103 @@ img {
     height: 2px;
     background-color: var(--primary);
     border-radius: 2px;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
-.mobile-nav {
-    display: none;
+/* Mobile Sidebar Drawer Overlay */
+.mobile-overlay {
     position: fixed;
-    top: 78px;
+    top: 0;
     left: 0;
-    right: 0;
-    background: white;
-    box-shadow: var(--shadow-lg);
-    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 36, 99, 0.85); /* Deep navy blur */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile Sidebar Drawer (Top-Down) */
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100vh;
+    background: var(--bg-dark);
+    z-index: 1050;
+    transform: translateY(-100%); /* Hidden offscreen top */
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.mobile-sidebar.open {
+    transform: translateY(0);
+}
+
+.mobile-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 1.5rem;
-    border-top: 3px solid var(--primary-light);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.mobile-nav.open {
-    display: block;
-    animation: slideDown 0.3s ease;
+.close-sidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.mobile-nav a {
-    display: block;
-    padding: 14px 16px;
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: 1.05rem;
-    border-radius: var(--radius-sm);
-    border-bottom: 1px solid var(--border);
-}
-
-.mobile-nav a:last-child {
-    border-bottom: none;
-}
-
-.mobile-nav a:hover {
-    background: var(--bg-light);
+.close-sidebar:hover {
+    transform: rotate(90deg);
     color: var(--primary-light);
+}
+
+.mobile-sidebar-content {
+    padding: 1.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.mobile-sidebar-content a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.2s ease;
+}
+
+.mobile-sidebar-content a i {
+    font-size: 1.25rem;
+    color: var(--primary-light);
+}
+
+.mobile-sidebar-content a:hover,
+.mobile-sidebar-content a:active {
+    color: white;
+    padding-left: 10px;
+    background: transparent;
 }
 
 /* =====================================================
@@ -2996,9 +3047,6 @@ textarea.form-control {
         flex-direction: column;
         width: 100%;
     }
-    .logo-text-wrap {
-        display: none !important;
-    }
 }
 
 
@@ -3029,6 +3077,7 @@ body {
     }
 
     /* Navigation */
+    .main-header { position: relative !important; }
     .main-nav, .nav-actions { display: none !important; }
     .menu-toggle { display: flex !important; }
 
@@ -3092,7 +3141,6 @@ body {
     .about-stats-grid { grid-template-columns: 1fr !important; }
     .footer-grid { grid-template-columns: 1fr !important; }
     .hero-card { display: none; }
-    .logo-tagline { display: none; }
     .hero-stats { display: none; }
     
     /* Contact form grid */

@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=2.0">
 
     {% block extra_css %}{% endblock %}
 </head>
@@ -42,17 +42,26 @@
             <!-- Logo -->
             <div class="logo">
                 <a href="{% url 'home' %}">
-                    <div class="logo-icon-wrap">
-                        {% if site_images.logo %}
-                            <img src="{{ site_images.logo.url }}" alt="Logo" style="height: 30px; width: auto; max-width: 100px; object-fit: contain;">
-                        {% else %}
+                    {% if site_images.logo %}
+                        <!-- Custom Uploaded Logo (No Background Box) -->
+                        <img src="{{ site_images.logo.url }}" alt="Ankira Solution Logo" style="height: 55px; width: auto; max-width: 250px; object-fit: contain; margin-right: 12px;">
+                        
+                        <!-- Keep text next to it just in case their logo is only an icon, 
+                             they can easily hide this via CSS if their PNG has text built-in -->
+                        <div class="logo-text-wrap" id="logo-text-fallback">
+                            <span class="logo-main">Ankira<span>Solution</span></span>
+                            <span class="logo-tagline">VLSI Training Institute</span>
+                        </div>
+                    {% else %}
+                        <!-- Default Icon Logo (With Background Box) -->
+                        <div class="logo-icon-wrap">
                             <i class="bi bi-lightning-charge-fill" style="color:var(--accent);"></i>
-                        {% endif %}
-                    </div>
-                    <div class="logo-text-wrap">
-                        <span class="logo-main">Ankira<span>Solution</span></span>
-                        <span class="logo-tagline">VLSI Training Institute</span>
-                    </div>
+                        </div>
+                        <div class="logo-text-wrap">
+                            <span class="logo-main">Ankira<span>Solution</span></span>
+                            <span class="logo-tagline">VLSI Training Institute</span>
+                        </div>
+                    {% endif %}
                 </a>
             </div>
 
@@ -80,16 +89,27 @@
             </button>
         </div>
 
-        <!-- Mobile Navigation -->
-        <div class="mobile-nav" id="mobile-nav">
+
+    </header>
+
+    <!-- Mobile Sidebar Overlay & Drawer -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="mobile-sidebar-header">
+            <h5 class="mb-0 text-white font-weight-bold" style="font-size:1.2rem;">Menu</h5>
+            <button class="close-sidebar" id="close-sidebar" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="mobile-sidebar-content">
             <a href="{% url 'home' %}"><i class="bi bi-house-door"></i> Home</a>
             <a href="{% url 'courses' %}"><i class="bi bi-journal-bookmark"></i> Our Courses</a>
             <a href="{% url 'faculty' %}"><i class="bi bi-person-video3"></i> Faculty &amp; Placement</a>
             <a href="{% url 'reviews_page' %}"><i class="bi bi-star"></i> Reviews</a>
             <a href="{% url 'contact' %}"><i class="bi bi-telephone"></i> Contact Us</a>
-            <a href="{% url 'contact' %}" class="btn btn-primary mt-3" style="text-align:center;">Enroll Now</a>
+            <div class="mt-4 pt-4 border-top" style="border-color: rgba(255,255,255,0.1) !important;">
+                <a href="{% url 'contact' %}" class="btn btn-primary" style="width:100%; justify-content:center;">Enroll Now</a>
+            </div>
         </div>
-    </header>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -145,11 +165,11 @@
                     </div>
                     <div class="footer-contact-item">
                         <span class="footer-contact-icon"><i class="bi bi-telephone"></i></span>
-                        <span>+91 98765 43210</span>
+                        <span>+91 9281477889</span>
                     </div>
                     <div class="footer-contact-item">
                         <span class="footer-contact-icon"><i class="bi bi-envelope"></i></span>
-                        <span>info@ankirasolution.com</span>
+                        <span>ankirasolutions@gmail.com</span>
                     </div>
                     <div class="footer-contact-item">
                         <span class="footer-contact-icon"><i class="bi bi-clock"></i></span>
@@ -171,24 +191,38 @@
 
     <!-- JavaScript -->
     <script>
-        // Mobile navigation toggle
+        // Mobile Sidebar Drawer
         const menuToggle = document.getElementById('menu-toggle');
-        const mobileNav = document.getElementById('mobile-nav');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const closeSidebar = document.getElementById('close-sidebar');
 
-        menuToggle.addEventListener('click', () => {
-            mobileNav.classList.toggle('open');
-        });
+        function openMenu() {
+            mobileSidebar.classList.add('open');
+            mobileOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
 
-        // Close mobile nav on link click
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('open');
+        function closeMenu() {
+            mobileSidebar.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        if(menuToggle) menuToggle.addEventListener('click', openMenu);
+        if(closeSidebar) closeSidebar.addEventListener('click', closeMenu);
+        if(mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+
+        // Close sidebar on link click
+        if(mobileSidebar) {
+            mobileSidebar.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
             });
-        });
+        }
 
         // Active nav link highlighting
         const currentPath = window.location.pathname;
-        const navLinks = document.querySelectorAll('#nav-links a, #mobile-nav a');
+        const navLinks = document.querySelectorAll('#nav-links a, #mobile-sidebar a');
         navLinks.forEach(link => {
             if (link.getAttribute('href') === currentPath ||
                 (currentPath !== '/' && link.getAttribute('href').startsWith(currentPath.split('/')[1]))) {

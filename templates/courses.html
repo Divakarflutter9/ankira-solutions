@@ -25,12 +25,79 @@ with detailed curriculum and hands-on training.{% endblock %}
 <section class="py-section bg-white">
     <div class="container">
 
-        <!-- Course Navigation Tabs -->
-        <div class="courses-nav">
-            <button class="course-tab active" onclick="filterCourse(this, 'frontend')"><i class="bi bi-plug"></i> Frontend Design</button>
-            <button class="course-tab" onclick="filterCourse(this, 'backend')"><i class="bi bi-building"></i> Backend Design</button>
-            <button class="course-tab" onclick="filterCourse(this, 'sta')"><i class="bi bi-stopwatch"></i> Static Timing Analysis</button>
-            <button class="course-tab" onclick="filterCourse(this, 'analog')"><i class="bi bi-microscope"></i> Analog & Mixed Signal</button>
+        <!-- Course Navigation Grid -->
+        <div class="course-cards-grid" style="margin-bottom: 4rem;">
+            <!-- Frontend -->
+            <div class="course-card" onclick="filterCourse(this, 'frontend')" style="cursor: pointer; transition: 0.3s; border: 2px solid transparent;">
+                {% if course_images.frontend_design %}
+                <div class="course-card-img">
+                    <img src="{{ course_images.frontend_design.url }}" alt="VLSI Frontend Design" style="width:100%; height:160px; object-fit:cover; border-radius:12px 12px 0 0;">
+                </div>
+                {% endif %}
+                <div class="course-card-top">
+                    <span class="course-icon-top"><i class="bi bi-plug"></i></span>
+                    <div class="course-card-title">Frontend Design</div>
+                    <div class="course-card-subtitle">RTL &amp; Verification</div>
+                </div>
+                <div class="course-card-body">
+                    <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom: 1rem;">Complete frontend ASIC design flow from Digital Fundamentals to verification using industry-standard EDA tools.</p>
+                    <button class="btn btn-primary" style="width:100%;">View Curriculum <i class="bi bi-arrow-down-short"></i></button>
+                </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="course-card" onclick="filterCourse(this, 'backend')" style="cursor: pointer; transition: 0.3s; border: 2px solid transparent;">
+                {% if course_images.backend_design %}
+                <div class="course-card-img">
+                    <img src="{{ course_images.backend_design.url }}" alt="VLSI Backend Physical Design" style="width:100%; height:160px; object-fit:cover; border-radius:12px 12px 0 0;">
+                </div>
+                {% endif %}
+                <div class="course-card-top">
+                    <span class="course-icon-top"><i class="bi bi-building"></i></span>
+                    <div class="course-card-title">Backend Design</div>
+                    <div class="course-card-subtitle">RTL to GDSII Flow</div>
+                </div>
+                <div class="course-card-body">
+                    <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom: 1rem;">Comprehensive physical design training covering the complete RTL to GDSII flow with hands-on labs.</p>
+                    <button class="btn btn-outline-primary" style="width:100%;">View Curriculum <i class="bi bi-arrow-down-short"></i></button>
+                </div>
+            </div>
+
+            <!-- STA -->
+            <div class="course-card" onclick="filterCourse(this, 'sta')" style="cursor: pointer; transition: 0.3s; border: 2px solid transparent;">
+                {% if course_images.sta %}
+                <div class="course-card-img">
+                    <img src="{{ course_images.sta.url }}" alt="Static Timing Analysis" style="width:100%; height:160px; object-fit:cover; border-radius:12px 12px 0 0;">
+                </div>
+                {% endif %}
+                <div class="course-card-top">
+                    <span class="course-icon-top"><i class="bi bi-stopwatch"></i></span>
+                    <div class="course-card-title">Static Timing Analysis</div>
+                    <div class="course-card-subtitle">Special Program</div>
+                </div>
+                <div class="course-card-body">
+                    <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom: 1rem;">Deep-dive program for mastering timing analysis, SDC constraints, and timing closure methodologies.</p>
+                    <button class="btn btn-outline-primary" style="width:100%;">View Curriculum <i class="bi bi-arrow-down-short"></i></button>
+                </div>
+            </div>
+
+            <!-- Analog -->
+            <div class="course-card" onclick="filterCourse(this, 'analog')" style="cursor: pointer; transition: 0.3s; border: 2px solid transparent;">
+                {% if course_images.analog_mixed %}
+                <div class="course-card-img">
+                    <img src="{{ course_images.analog_mixed.url }}" alt="Analog & Mixed Signal" style="width:100%; height:160px; object-fit:cover; border-radius:12px 12px 0 0;">
+                </div>
+                {% endif %}
+                <div class="course-card-top">
+                    <span class="course-icon-top"><i class="bi bi-microscope"></i></span>
+                    <div class="course-card-title">Analog &amp; Mixed Signal</div>
+                    <div class="course-card-subtitle">Optional Program</div>
+                </div>
+                <div class="course-card-body">
+                    <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom: 1rem;">Introductory program for analog IC design and mixed-signal concepts, from device physics through basic layout.</p>
+                    <button class="btn btn-outline-primary" style="width:100%;">View Curriculum <i class="bi bi-arrow-down-short"></i></button>
+                </div>
+            </div>
         </div>
 
         <!-- MODULE 1: VLSI Frontend Design -->
@@ -249,14 +316,49 @@ with detailed curriculum and hands-on training.{% endblock %}
 
 {% block extra_js %}
 <script>
-    function filterCourse(btn, id) {
-        // Deactivate all tabs
-        document.querySelectorAll('.course-tab').forEach(t => t.classList.remove('active'));
-        btn.classList.add('active');
+    // Initialize first card as active
+    document.addEventListener("DOMContentLoaded", function() {
+        const firstCard = document.querySelector('.course-card');
+        if (firstCard) {
+            firstCard.style.borderColor = 'var(--primary)';
+            firstCard.style.transform = 'translateY(-5px)';
+            firstCard.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+        }
+    });
+
+    function filterCourse(card, id) {
+        // Reset all cards styling
+        document.querySelectorAll('.course-card').forEach(c => {
+            c.style.borderColor = 'transparent';
+            c.style.transform = 'translateY(0)';
+            c.style.boxShadow = 'none';
+            // Change buttons back to outline
+            const btn = c.querySelector('.btn');
+            if (btn) {
+                btn.className = 'btn btn-outline-primary';
+                btn.style.width = '100%';
+            }
+        });
+        
+        // Highlight active card
+        card.style.borderColor = 'var(--primary)';
+        card.style.transform = 'translateY(-5px)';
+        card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+        const activeBtn = card.querySelector('.btn');
+        if (activeBtn) {
+            activeBtn.className = 'btn btn-primary';
+            activeBtn.style.width = '100%';
+        }
+        
         // Hide all modules
         document.querySelectorAll('.course-group').forEach(el => el.style.display = 'none');
-        // Show selected
-        document.getElementById('course-' + id).style.display = 'block';
+        
+        // Show selected module and scroll smoothly to it
+        const target = document.getElementById('course-' + id);
+        target.style.display = 'block';
+        
+        const y = target.getBoundingClientRect().top + window.scrollY - 100; // offset for sticky header
+        window.scrollTo({top: y, behavior: 'smooth'});
     }
 </script>
 {% endblock %}
